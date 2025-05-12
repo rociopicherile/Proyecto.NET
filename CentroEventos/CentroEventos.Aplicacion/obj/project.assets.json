@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
+      "projectUniqueName": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
       "projectName": "CentroEventos.Aplicacion",
-      "projectPath": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
+      "projectPath": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
       "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Aplicacion\\obj\\",
+      "outputPath": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Aplicacion\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",

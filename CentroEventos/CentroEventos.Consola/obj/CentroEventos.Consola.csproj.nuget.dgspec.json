@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj": {}
+    "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj": {}
   },
   "projects": {
-    "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
+    "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
+        "projectUniqueName": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
         "projectName": "CentroEventos.Aplicacion",
-        "projectPath": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
+        "projectPath": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj",
         "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Aplicacion\\obj\\",
+        "outputPath": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Aplicacion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -356,14 +356,14 @@
         }
       }
     },
-    "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj": {
+    "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj",
+        "projectUniqueName": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj",
         "projectName": "CentroEventos.Consola",
-        "projectPath": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj",
+        "projectPath": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Consola\\CentroEventos.Consola.csproj",
         "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Consola\\obj\\",
+        "outputPath": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Consola\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -381,11 +381,11 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
-                "projectPath": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj"
+              "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
+                "projectPath": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj"
               },
-              "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {
-                "projectPath": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj"
+              "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {
+                "projectPath": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj"
               }
             }
           }
@@ -715,14 +715,14 @@
         }
       }
     },
-    "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {
+    "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj",
+        "projectUniqueName": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj",
         "projectName": "CentroEventos.Repositorios",
-        "projectPath": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj",
+        "projectPath": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Repositorios\\CentroEventos.Repositorios.csproj",
         "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Repositorios\\obj\\",
+        "outputPath": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Repositorios\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -740,8 +740,8 @@
           "net10.0": {
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
-                "projectPath": "C:\\Users\\USUARIO\\Documents\\Facultad\\Segundo Año\\Seminario de Lenguajes - .NET\\Proyecto Primera Entrega\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj"
+              "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj": {
+                "projectPath": "C:\\Users\\USUARIO\\Documents\\repositorio\\CentroEventos\\CentroEventos.Aplicacion\\CentroEventos.Aplicacion.csproj"
               }
             }
           }
