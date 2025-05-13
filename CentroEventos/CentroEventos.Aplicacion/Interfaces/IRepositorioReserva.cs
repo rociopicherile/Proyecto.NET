@@ -1,3 +1,5 @@
+using CentroEventos.Aplicacion;
+
 public interface IRepositorioReserva{
-    // Completar
+    void AgregarReserva(Reserva reserva);
 }

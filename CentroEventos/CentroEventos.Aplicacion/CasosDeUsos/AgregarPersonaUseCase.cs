@@ -6,13 +6,13 @@ public class AgregarPersonaUseCase (IRepositorioPersona perso,PersonaValidador v
 
     public void Ejecutar(Persona persona){
 
-        if (!validador.Validar(Persona, out string mensajeError))
+        if (!validador.Validar(persona, out string mensajeError))
         {
             throw new Exception(mensajeError);
         }
 
 
-        perso.AgregarPersona(producto);
+        perso.AgregarPersona(persona);
     }
 
 }
