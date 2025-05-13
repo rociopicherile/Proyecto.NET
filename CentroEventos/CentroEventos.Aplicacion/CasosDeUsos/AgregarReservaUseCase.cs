@@ -10,7 +10,7 @@ public class AgregarReservaUseCase (IRepositorioReserva reser,ReservaValidador v
         }
 
 
-        reser.AgregarReserva(producto);
+        reser.AgregarReserva(reserva);
     }
 
 }
