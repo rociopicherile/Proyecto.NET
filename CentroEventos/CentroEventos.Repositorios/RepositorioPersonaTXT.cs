@@ -5,6 +5,7 @@ namespace CentroEventos.Repositorios;
 using CentroEventos.Aplicacion;
 public class RepositorioPersonaTXT /*:  IRepositorioPersona*/ {
     readonly string _nombreArch = "personas.txt";
+    
     public void Agregar(Persona persona)
     {
         // Completar: persona.Id = GenerarNuevoId();
@@ -21,7 +22,7 @@ public class RepositorioPersonaTXT /*:  IRepositorioPersona*/ {
         };
 
 
-        // Escribir la línea al archivo, separada por guión
+        // Escribir la línea al archivo, separada por palito
         sw.WriteLine(string.Join('|', campos));
     }
 
