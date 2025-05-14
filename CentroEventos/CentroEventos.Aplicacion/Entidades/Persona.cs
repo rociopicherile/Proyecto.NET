@@ -12,5 +12,9 @@ public class Persona
     
     
     
-    // Completar
+    public override string ToString()
+    {
+        return $"ID:{id}, DNI:{DNI}, Nombre:{Nombre}, Apellido:{Apellido}, Email:{Email}, Telefono:{Telefono}";
+    }
+
 }

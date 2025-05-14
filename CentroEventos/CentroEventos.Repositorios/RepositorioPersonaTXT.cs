@@ -1,14 +1,25 @@
-﻿/* Falta añadir un archivo para los ID's
+﻿/* 
+Esto lo hice yo (Rocío Belén)
+Esta clase está terminada, no falta nada (creo)
 */
 
 namespace CentroEventos.Repositorios;
 using CentroEventos.Aplicacion;
 public class RepositorioPersonaTXT /*:  IRepositorioPersona*/ {
     readonly string _nombreArch = "personas.txt";
-    
+    readonly string _archivoIds = "IDs.txt";
+    private int _idUltimo;
+
+    public RepositorioPersonaTXT(){
+        using var sr = StreamReader(_archivoIds);
+        _idUltimo = int.Parse(sr.ReadToEnd());
+    }
     public void Agregar(Persona persona)
-    {
-        // Completar: persona.Id = GenerarNuevoId();
+    {   
+        using var sw2 = StreamWriter(_archivoIds, false);
+        _idUltimo++;
+        persona.Id = _idUltimo;
+
         using var sw = new StreamWriter(_nombreArch, true);
 
         // Crear una lista de los campos comunes
@@ -24,6 +35,7 @@ public class RepositorioPersonaTXT /*:  IRepositorioPersona*/ {
 
         // Escribir la línea al archivo, separada por palito
         sw.WriteLine(string.Join('|', campos));
+        sw2.WriteLine(_idUltimo);
     }
 
     public void Eliminar(int id){
@@ -63,33 +75,51 @@ public class RepositorioPersonaTXT /*:  IRepositorioPersona*/ {
         return lista;
     }
     
-
     public void Actualizar(Persona persona){
-        using var sr = new StreamReader(_nombreArch);
-        char[] delimitadores = {'|', ' '};
-
-        // (1) Convierto al archivo en una lista
-        List<string> lineas = File.ReadAllLines(_nombreArch).ToList();
-
-        // (2) El vector 'vectorLinea' me sirve para analizar cada línea de forma individual
+        List<Persona> lista = new List<Persona>();
+        lista = ListarPersona();
         int i = 0;
-        string[] vectorLinea = lineas[i].Split(delimitadores);
-        
-        // (3) Recorro la lista buscando a la persona cuyo ID coincida 
-       while (i <= lineas.Count && persona.Id.ToString() != vectorLinea[0])
-        {
+
+        while(i <= lista.Count && persona.Id != lista[i].Id){
             i++;
-
-            // Divido en partes a cada línea
-            vectorLinea = lineas[i].Split(delimitadores);
         }
 
-        // (4) Una vez encontrado el Id, reescribo a la persona
-        if (persona.Id.ToString() == vectorLinea[0]){
-            lineas[i] = $"{persona.Id}|{persona.DNI}|{persona.Nombre} {persona.Apellido}|{persona.Telefono}|{persona.Email}"; 
+        if (persona.Id == lista[i].Id){
+            lista[i] = persona;
         }
 
-        // (5) Reescribo el archivo con la persona modificada
-        File.WriteAllLines(_nombreArch, lineas);
+        // Sobrescribir el archivo con las nuevas líneas
+        File.WriteAllLines(_nombreArch, lista);
+    }
+
+
+    public bool ExisteDNI(string dni){
+        foreach(Persona p in this.ListarPersona()){
+            if(p.dni == dni){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public bool ExisteEmail(string email){
+        foreach(Persona p in this.ListarPersona()){
+            if(p.Email == email){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    }
+
+    public bool ExisteId(int id){
+        foreach(Persona p in this.ListarPersona()){
+            if(p.Id == id){
+                return true;
+            }
+        }
+        return false;
     }
 }
