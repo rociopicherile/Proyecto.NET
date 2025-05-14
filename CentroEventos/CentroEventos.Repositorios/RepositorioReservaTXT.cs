@@ -1,4 +1,4 @@
-// Hecho por Matias: Agregar(), Id y Actualizar()
+// Hecho por Mati: Agregar(), Id y Actualizar()
 // Falta: Eliminar y Listar
 
 namespace CentroEventos.Repositorios;
@@ -11,7 +11,7 @@ public class RepositorioReservaTXT /* : IRepositorioReserva */ {
         using var sr= new StreamReader (_archivoIds);
         _idUltimo= int.Parse(sr.ReadToEnd());
     }
-    public void Agregar(Reserva reserva){
+    public void AgregarReserva(Reserva reserva){
         reserva.Id = _idUltimo;
         _idUltimo++;
         using var sw2 = new StreamWriter(_archivoIds, false);
@@ -32,7 +32,7 @@ public class RepositorioReservaTXT /* : IRepositorioReserva */ {
         sw2.WriteLine(_idUltimo);
     }
 
-    public void Actualizar(Reserva r){
+    public void ActualizarReserva(Reserva r){
         Boolean encontrado = false;
         using var sr = new StreamReader(_nombreArchivo);
         using var sw = new StreamWriter ("archivoTemporal.TXT");

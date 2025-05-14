@@ -29,23 +29,23 @@ public class RepositorioEventoDeportivoTXT: IRepositorioEventoDeportivo
         return resultado;
     }
 
-    public void Agregar(EventoDeportivo p){
+    public void AgregarEventoDeportivo(EventoDeportivo ed){
         _idUltimo++;
         using var sw2 = new StreamWriter(_archivoIds, false);
 
         using var sw=new StreamWriter(_nombreArchivo,true);
-        p.id = _idUltimo;
-        sw.WriteLine(p.Id);
-        sw.WriteLine(p.Nombre);
-        sw.WriteLine(p.Descripcion);
-        sw.WriteLine(p.FechaHoraInicio);
-        sw.WriteLine(p.DuracionHoras);
-        sw.WriteLine(p.CupoMaximo);
-        sw.WriteLine(p.ResponsableId);
+        ed.id = _idUltimo;
+        sw.WriteLine(ed.Id);
+        sw.WriteLine(ed.Nombre);
+        sw.WriteLine(ed.Descripcion);
+        sw.WriteLine(ed.FechaHoraInicio);
+        sw.WriteLine(ed.DuracionHoras);
+        sw.WriteLine(ed.CupoMaximo);
+        sw.WriteLine(ed.ResponsableId);
         sw2.WriteLine(_idUltimo);
     }
 
-    public void Actualizar(EventoDeportivo ed){
+    public void ActualizarEventoDeportivo(EventoDeportivo ed){
         Boolean encontrado = false;
         using var sr = new StreamReader(_nombreArchivo);
         using var sw = new StreamWriter ("archivoTemporal.TXT");

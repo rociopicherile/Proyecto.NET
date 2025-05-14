@@ -5,7 +5,7 @@ Esta clase está terminada, no falta nada (creo)
 
 namespace CentroEventos.Repositorios;
 using CentroEventos.Aplicacion;
-public class RepositorioPersonaTXT /*:  IRepositorioPersona*/ {
+public class RepositorioPersonaTXT :  IRepositorioPersona {
     readonly string _nombreArch = "personas.txt";
     readonly string _archivoIds = "IDs.txt";
     private int _idUltimo;
@@ -14,7 +14,7 @@ public class RepositorioPersonaTXT /*:  IRepositorioPersona*/ {
         using var sr = StreamReader(_archivoIds);
         _idUltimo = int.Parse(sr.ReadToEnd());
     }
-    public void Agregar(Persona persona)
+    public void AgregarPersona(Persona persona)
     {   
         using var sw2 = StreamWriter(_archivoIds, false);
         _idUltimo++;
@@ -38,7 +38,7 @@ public class RepositorioPersonaTXT /*:  IRepositorioPersona*/ {
         sw2.WriteLine(_idUltimo);
     }
 
-    public void Eliminar(int id){
+    public void EliminarPersona(int id){
          // Leer todas las líneas
         List<string> lineas = File.ReadAllLines(_nombreArch).ToList();
 
@@ -75,7 +75,7 @@ public class RepositorioPersonaTXT /*:  IRepositorioPersona*/ {
         return lista;
     }
     
-    public void Actualizar(Persona persona){
+    public void ActualizarPersona(Persona persona){
         List<Persona> lista = new List<Persona>();
         lista = ListarPersona();
         int i = 0;
