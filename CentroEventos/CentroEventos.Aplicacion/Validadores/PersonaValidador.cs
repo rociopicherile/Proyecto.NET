@@ -2,9 +2,9 @@ namespace CentroEventos.Aplicacion;
 
 public class PersonaValidador {
 
-    public bool Validar(Persona persona, IRepositorioPersona repositorio,out string mensakeError){
+    public bool Validar(Persona persona, IRepositorioPersona repositorio,out string mensajeError){
 
-        mensakeError = "";
+        mensajeError = "";
         if(string.IsNullOrWhiteSpace(persona.Nombre)){
 
             mensajeError += "Nombre del persona inválido.\n";
@@ -32,6 +32,6 @@ public class PersonaValidador {
             mensajeError += "El email ya está registrado en otra persona.\n";
         }
 
-        return (mensakeError == "");
+        return (mensajeError == "");
     }
 }

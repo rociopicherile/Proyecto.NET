@@ -2,7 +2,7 @@
 
 public class EventoDeportivoValidador(IRepositorioPersona repo)
 {
-    public bool Validar(EventoDeportivo evento,String mensaje){
+    public bool Validar(EventoDeportivo evento, out string mensaje){
         mensaje="";
         if(string.IsNullOrWhiteSpace(evento.Nombre)){
             mensaje+="ERROR. No se puede ingresar un nombre vacio.\n";
@@ -16,7 +16,10 @@ public class EventoDeportivoValidador(IRepositorioPersona repo)
         if(evento.DuracionHoras<=0){
             mensaje+="ERROR. La duracion debe ser mayor a cero.\n";
         }
-        if(!repo.Existe(evento.Responsableld)){
+        if (evento.CupoMaximo<= 0){
+            mensaje += "ERROR. El cupo máximo debe ser mayor a cero.\n"
+        }
+        if(!repo.ExisteId(evento.Responsableld)){
             mensaje+="ERROR. El responsable no corresponde a una persona existenete.\n";
         }
         return (mensaje=="");

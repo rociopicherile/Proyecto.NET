@@ -11,7 +11,7 @@ public class RepositorioReservaTXT /* : IRepositorioReserva */ {
         using var sr= new StreamReader (_archivoIds);
         _idUltimo= int.Parse(sr.ReadToEnd());
     }
-    public void AgregarReserva(Reserva reserva){
+    public void AgregarReserva(Reserva r){
         reserva.Id = _idUltimo;
         _idUltimo++;
         using var sw2 = new StreamWriter(_archivoIds, false);
