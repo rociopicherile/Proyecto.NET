@@ -17,7 +17,7 @@ public class EventoDeportivoValidador(IRepositorioPersona repo)
             mensaje+="ERROR. La duracion debe ser mayor a cero.\n";
         }
         if (evento.CupoMaximo<= 0){
-            mensaje += "ERROR. El cupo máximo debe ser mayor a cero.\n"
+            mensaje += "ERROR. El cupo máximo debe ser mayor a cero.\n";
         }
         if(!repo.ExisteId(evento.Responsableld)){
             mensaje+="ERROR. El responsable no corresponde a una persona existenete.\n";
