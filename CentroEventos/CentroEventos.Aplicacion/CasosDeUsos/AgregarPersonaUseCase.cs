@@ -8,7 +8,7 @@ public class AgregarPersonaUseCase (IRepositorioPersona perso,PersonaValidador v
 
         if (!validador.Validar(persona, out string mensajeError))
         {
-            throw new Exception(mensajeError);
+            throw new ValidacionException(mensajeError);
         }
 
 
