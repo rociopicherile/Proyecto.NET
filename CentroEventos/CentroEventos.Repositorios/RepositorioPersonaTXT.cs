@@ -76,22 +76,33 @@ public class RepositorioPersonaTXT :  IRepositorioPersona {
     }
     
     public void ActualizarPersona(Persona persona){
-        List<Persona> lista = new List<Persona>();
-        lista = ListarPersona();
+
+        //Creo la lista con los datos del archivo
+        List<Persona> lista = ListarPersona();
         int i = 0;
 
-        while(i <= lista.Count && persona.Id != lista[i].Id){
+        //Busco a la persona en la lista según su id
+        while(i < lista.Count && persona.Id != lista[i].Id){
             i++;
         }
 
+        //Una vez encontrada, la actualizo en mi lista
         if (persona.Id == lista[i].Id){
             lista[i] = persona;
         }
 
-        // Sobrescribir el archivo con las nuevas líneas
-        File.WriteAllLines(_nombreArch, lista);
-    }
+        //Creo una lista de strings (para poder utilizar el método WriteAllLines)
+        List<string> lineas = new List<string>();
+    
+        // Por cada elemento de mi lista de Personas, lo añado como string a mi lista de strings 
+        foreach (var p in lista)
+        {
+            lineas.Add($"{p.Id}|{p.DNI}|{p.Nombre}|{p.Apellido}|{p.Telefono}|{p.Email}");
+        }
 
+        // 5. Sobrescribir al archivo con las líneas nuevas
+        File.WriteAllLines(_nombreArch, lineas);
+    }
 
     public bool ExisteDNI(string dni){
         foreach(Persona p in this.ListarPersona()){
@@ -102,7 +113,6 @@ public class RepositorioPersonaTXT :  IRepositorioPersona {
         return false;
     }
 
-
     public bool ExisteEmail(string email){
         foreach(Persona p in this.ListarPersona()){
             if(p.Email == email){
@@ -110,8 +120,6 @@ public class RepositorioPersonaTXT :  IRepositorioPersona {
             }
         }
         return false;
-    }
-
     }
 
     public bool ExisteId(int id){
