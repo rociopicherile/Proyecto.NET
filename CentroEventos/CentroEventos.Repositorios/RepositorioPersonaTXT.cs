@@ -5,17 +5,19 @@ Esta clase está terminada, no falta nada (creo)
 
 namespace CentroEventos.Repositorios;
 using CentroEventos.Aplicacion;
-public class RepositorioPersonaTXT :  IRepositorioPersona {
+public class RepositorioPersonaTXT : IRepositorioPersona
+{
     readonly string _nombreArch = "personas.txt";
     readonly string _archivoIds = "IDs.txt";
     private int _idUltimo;
 
-    public RepositorioPersonaTXT(){
+    public RepositorioPersonaTXT()
+    {
         using var sr = StreamReader(_archivoIds);
         _idUltimo = int.Parse(sr.ReadToEnd());
     }
     public void AgregarPersona(Persona persona)
-    {   
+    {
         using var sw2 = StreamWriter(_archivoIds, false);
         _idUltimo++;
         persona.Id = _idUltimo;
@@ -38,8 +40,9 @@ public class RepositorioPersonaTXT :  IRepositorioPersona {
         sw2.WriteLine(_idUltimo);
     }
 
-    public void EliminarPersona(int id){
-         // Leer todas las líneas
+    public void EliminarPersona(int id)
+    {
+        // Leer todas las líneas
         List<string> lineas = File.ReadAllLines(_nombreArch).ToList();
 
         // Buscar y eliminar la línea cuyo ID coincida
@@ -52,8 +55,9 @@ public class RepositorioPersonaTXT :  IRepositorioPersona {
     }
 
 
-    public List<Persona> ListarPersona(){
-        char[] delimitadores = {'|', ' '};
+    public List<Persona> ListarPersona()
+    {
+        char[] delimitadores = { '|', ' ' };
         List<Persona> lista = new List<Persona>();
         using var sr = new StreamReader(_nombreArch);
         while (!sr.EndOfStream)
@@ -61,7 +65,7 @@ public class RepositorioPersonaTXT :  IRepositorioPersona {
             Persona persona = new Persona();
             // Separo a la línea con Split y guardo cada campo en un vector de string
             string[] linea = sr.ReadLine().Split(delimitadores);
-            
+
             // Introduzco cada elemento del vector en mi objeto persona
             persona.Id = int.Parse(linea[0]);
             persona.DNI = linea[1];
@@ -74,26 +78,29 @@ public class RepositorioPersonaTXT :  IRepositorioPersona {
 
         return lista;
     }
-    
-    public void ActualizarPersona(Persona persona){
+
+    public void ActualizarPersona(Persona persona)
+    {
 
         //Creo la lista con los datos del archivo
         List<Persona> lista = ListarPersona();
         int i = 0;
 
         //Busco a la persona en la lista según su id
-        while(i < lista.Count && persona.Id != lista[i].Id){
+        while (i < lista.Count && persona.Id != lista[i].Id)
+        {
             i++;
         }
 
         //Una vez encontrada, la actualizo en mi lista
-        if (persona.Id == lista[i].Id){
+        if (persona.Id == lista[i].Id)
+        {
             lista[i] = persona;
         }
 
         //Creo una lista de strings (para poder utilizar el método WriteAllLines)
         List<string> lineas = new List<string>();
-    
+
         // Por cada elemento de mi lista de Personas, lo añado como string a mi lista de strings 
         foreach (var p in lista)
         {
@@ -104,30 +111,55 @@ public class RepositorioPersonaTXT :  IRepositorioPersona {
         File.WriteAllLines(_nombreArch, lineas);
     }
 
-    public bool ExisteDNI(string dni){
-        foreach(Persona p in this.ListarPersona()){
-            if(p.dni == dni){
+    public bool ExisteDNI(string dni)
+    {
+        foreach (Persona p in this.ListarPersona())
+        {
+            if (p.dni == dni)
+            {
                 return true;
             }
         }
         return false;
     }
 
-    public bool ExisteEmail(string email){
-        foreach(Persona p in this.ListarPersona()){
-            if(p.Email == email){
+    public bool ExisteEmail(string email)
+    {
+        foreach (Persona p in this.ListarPersona())
+        {
+            if (p.Email == email)
+            {
                 return true;
             }
         }
         return false;
     }
 
-    public bool ExisteId(int id){
-        foreach(Persona p in this.ListarPersona()){
-            if(p.Id == id){
+    public bool ExisteId(int id)
+    {
+        foreach (Persona p in this.ListarPersona())
+        {
+            if (p.Id == id)
+            {
                 return true;
             }
         }
         return false;
     }
+
+    public Persona BuscarPersona(int id)// no se si esta bien
+    {
+        var personas = this.ListarPersona();
+        int i = 0;
+    
+        while (i < personas.Count)
+        {
+        if (personas[i].Id == id)
+        {
+            return personas[i];
+        }
+            i++;
+        }
+    }
+
 }
