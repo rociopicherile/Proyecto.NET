@@ -1,4 +1,7 @@
-public interface IRepositorioPersona{
+using CentroEventos.Aplicacion;
+
+public interface IRepositorioPersona
+{
     void AgregarPersona(Persona persona);
     void EliminarPersona(int id);
     List<Persona> ListarPersona();
@@ -6,4 +9,6 @@ public interface IRepositorioPersona{
     bool ExisteDNI(string dni);
     bool ExisteEmail(string email);
     bool ExisteId(int id);
+
+    Persona BuscarPersona(int id);
 }
