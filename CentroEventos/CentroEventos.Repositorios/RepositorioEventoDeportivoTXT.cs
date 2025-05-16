@@ -1,6 +1,7 @@
 // Hecho por Sebas: Agregar y Listar
 // Hecho por Mati: Actualizar y ID Único
-// Falta: Eliminar
+// Falta: EliminarEventoDeportivo, etc
+
 public class RepositorioEventoDeportivoTXT: IRepositorioEventoDeportivo
 {
     readonly string _nombreArchivo="eventoDeportivo.txt";

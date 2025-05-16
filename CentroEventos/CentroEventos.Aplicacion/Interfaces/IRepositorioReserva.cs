@@ -1,12 +1,13 @@
-using CentroEventos.Aplicacion;
+using System;
+
+namespace CentroEventos.Aplicacion;
 
 public interface IRepositorioReserva
 {
-    void AgregarReserva(Reserva reserva);
-    void EliminarReserva(int id);
-    void ActualizarReserva(Reserva reserva);
-    List<Reserva> ListarReserva();
-
-    
-    // Completar
+    public List<Reserva> ListarReserva();
+    public void AgregarReserva(Reserva r);
+    public void EliminarReserva(int id);
+    public void ActualizarReserva(Reserva r);
+    public bool Reservo(Reserva r);
+    public int CantidadDeReservas(int id);//devuelve la cantidad de personas que reservaron en un evento cuyo id se pasa por parametro
 }
