@@ -116,5 +116,20 @@ public class RepositorioEventoDeportivoTXT : IRepositorioEventoDeportivo
         }
     }
 
+    public bool ExisteId(int id)
+    {
+        foreach (EventoDeportivo ed in this.ListarEventoDeportivo())
+        {
+            if (ed.Id == id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*public bool EsResponsableDeEventoDeportivo (int id){
+        List <EventoDeportivo> listaEventos = ListarEventoDeportivo();
+    }*/
 
 }

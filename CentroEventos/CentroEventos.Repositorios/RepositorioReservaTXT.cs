@@ -136,4 +136,34 @@ public class RepositorioReservaTXT : IRepositorioReserva
         }
         return total;
     }
+
+    public bool TieneReservaAsociada(int Id){
+        List <Reserva> listaReservas = ListarReserva();
+
+        int i = 0;
+        bool encontre = false;
+
+        //Recorro a la list de reservas, buscando si exista alguna que tenga el mismo EventoDeportivoId
+        while (i < listaReservas.Count && !encontre){
+            if (listaReservas[i].EventoDeportivoId == Id){
+                encontre = true;
+            }
+            i++;
+        }
+
+        return encontre;
+    }
+
+    public bool ExisteId(int id)
+    {
+        foreach (Reserva r in this.ListarReserva())
+        {
+            if (r.Id == id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

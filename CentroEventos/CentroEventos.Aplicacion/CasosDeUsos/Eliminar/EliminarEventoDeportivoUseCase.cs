@@ -14,23 +14,9 @@ namespace CentroEventos.Aplicacion.Eliminar;
 
 public class EliminarEventoDeportivoUseCase (IRepositorioEventoDeportivo repoED, IRepositorioReserva repoR){
 
-
     public void Ejecutar(int Id){
-        // (1) Obtengo la lista de reservas
-        List<Reserva> listaReservas = repoR.ListarReserva();
-        int i = 0;
-        bool sePuedeBorrar = true;
-
-        //(2) Recorro a la list de reservas, buscando si exista alguna que tenga el mismo EventoDeportivoId
-        while (i < listaReservas.Count && sePuedeBorrar){
-            if (listaReservas[i].EventoDeportivoId == Id){
-                sePuedeBorrar = false;
-            }
-            i++;
-        }
-
-        // (3) Verifico si se puede borrar o no
-        if (sePuedeBorrar){
+        // Si existe el evento deportivo y no tiene ninguna reserva asociada
+        if (repoED.ExisteId(Id) && !repoR.ExisteEventoDeportivoAsociado(Id)){
             repoED.EliminarEventoDeportivo(id);
         }
         else{
