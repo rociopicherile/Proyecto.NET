@@ -1,3 +1,4 @@
+namespace CentroEventos.Aplicacion.Entidades;
 public enum Permiso
 {
     EventoAlta, EventoModificacion, EventoBaja,

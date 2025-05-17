@@ -1,5 +1,6 @@
 using CentroEventos.Aplicacion;
 
+namespace CentroEventos.Aplicacion.Interfaces;
 public interface IRepositorioPersona
 {
     void AgregarPersona(Persona persona);
