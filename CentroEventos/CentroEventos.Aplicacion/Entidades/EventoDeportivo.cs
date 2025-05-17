@@ -1,4 +1,4 @@
-namespace CentroEventos.Aplicacion;
+namespace CentroEventos.Aplicacion.Entidades;
 
 public class EventoDeportivo
 {
@@ -11,6 +11,6 @@ public class EventoDeportivo
     public int ResponsableId { get; set; } 
 
     public override string ToString(){
-        return $"ID:{id}, PersonaId(id de la persona que concreto la reserva): {PersonaId}, EventoDeportivo(id del evento que se reservo):{EventoDeportivoId}, Fecha y Hora:{FechaAltaReserva}, Asistencia:{EstadoAsistencia}";
+        return $"ID:{Id}, PersonaId(id de la persona que concreto la reserva): {PersonaId}, EventoDeportivo(id del evento que se reservo):{EventoDeportivoId}, Fecha y Hora:{FechaAltaReserva}, Asistencia:{EstadoAsistencia}";
     }
 }

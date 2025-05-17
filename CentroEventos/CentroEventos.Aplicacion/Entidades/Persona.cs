@@ -1,4 +1,4 @@
-﻿namespace CentroEventos.Aplicacion;
+﻿namespace CentroEventos.Aplicacion.Entidades;
 
 public class Persona
 {
@@ -14,7 +14,7 @@ public class Persona
     
     public override string ToString()
     {
-        return $"ID:{id}, DNI:{DNI}, Nombre:{Nombre}, Apellido:{Apellido}, Email:{Email}, Telefono:{Telefono}";
+        return $"ID:{Id}, DNI:{DNI}, Nombre:{Nombre}, Apellido:{Apellido}, Email:{Email}, Telefono:{Telefono}";
     }
 
 }
