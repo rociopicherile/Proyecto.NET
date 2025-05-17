@@ -3,3 +3,8 @@ C:\Users\Chorizard\Desktop\CentroEventos\Proyecto.NET\CentroEventos\CentroEvento
 C:\Users\Chorizard\Desktop\CentroEventos\Proyecto.NET\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.AssemblyInfo.cs
 C:\Users\Chorizard\Desktop\CentroEventos\Proyecto.NET\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.csproj.CoreCompileInputs.cache
 C:\Users\Chorizard\Desktop\CentroEventos\Proyecto.NET\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.sourcelink.json
+C:\Users\USUARIO\Documents\repositorio\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USUARIO\Documents\repositorio\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.AssemblyInfoInputs.cache
+C:\Users\USUARIO\Documents\repositorio\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.AssemblyInfo.cs
+C:\Users\USUARIO\Documents\repositorio\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\Documents\repositorio\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net8.0\CentroEventos.Aplicacion.sourcelink.json

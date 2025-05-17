@@ -4,11 +4,13 @@
 
 Corregido por mí (Rocío Belén)
 */
+namespace CentroEventos.Aplicacion.Eliminar;
 
 using System;
 using CentroEventos.Aplicacion.Excepciones;
-
-namespace CentroEventos.Aplicacion.Eliminar;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Validadores;
 
 public class EliminarEventoDeportivoUseCase(IRepositorioEventoDeportivo repo,EventoDeportivoValidador validador,IServicioAutorizacion autorizacion)
 {

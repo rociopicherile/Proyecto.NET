@@ -1,10 +1,12 @@
 // Código corregido por Sebas
-
+namespace CentroEventos.Aplicacion;
 using System;
-using System.ComponentModel.DataAnnotations;
 using CentroEventos.Aplicacion.Excepciones;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Validadores;
 
-namespace CentroEventos.Aplicacion.Actualizar;
+
 
 public class ActualizarEventoDeportivoUseCase(IRepositorioEventoDeportivo repo,EventoDeportivoValidador validador,IServicioAutorizacion autorizacion)
 {

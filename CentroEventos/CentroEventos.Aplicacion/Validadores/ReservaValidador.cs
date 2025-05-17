@@ -1,9 +1,10 @@
 // corregido por sebas
-
+namespace CentroEventos.Aplicacion.Validadores;
 using System;
 using CentroEventos.Aplicacion.Excepciones;
-
-namespace CentroEventos.Aplicacion;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Validadores;
 
 public class ReservaValidador(IRepositorioPersona r1, IRepositorioEventoDeportivo r2, IRepositorioReserva r3)
 {

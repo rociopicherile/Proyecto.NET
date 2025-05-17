@@ -1,10 +1,13 @@
 // corregido por sebas
+namespace CentroEventos.Aplicacion.Validadores;
 
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks.Dataflow;
-
-namespace CentroEventos.Aplicacion;
+using CentroEventos.Aplicacion.Excepciones;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Validadores;
 
 public class PersonaValidador(IRepositorioPersona repositorio, IRepositorioReserva repoReserva, IRepositorioEventoDeportivo repoED)
 {

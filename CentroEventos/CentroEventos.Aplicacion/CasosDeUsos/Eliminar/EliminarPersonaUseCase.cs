@@ -5,11 +5,13 @@ asociadas a ella (independientemente del estado de las reservas)."
 
 terminado (creo)
 */
+namespace CentroEventos.Aplicacion.Eliminar;
 
 using System;
 using CentroEventos.Aplicacion.Excepciones;
-
-namespace CentroEventos.Aplicacion.Eliminar;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Validadores;
 
 public class EliminarPersonaUseCase(IRepositorioPersona repoP, PersonaValidador validador,IServicioAutorizacion autorizacion)
 {

@@ -1,9 +1,11 @@
 // Corregido por Sebas
+namespace CentroEventos.Aplicacion.Eliminar;
 
 using System;
 using CentroEventos.Aplicacion.Excepciones;
-
-namespace CentroEventos.Aplicacion.Eliminar;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Validadores;
 
 public class EliminarReservaUseCase(IRepositorioReserva repo,ReservaValidador validador,IServicioAutorizacion autorizacion)
 {

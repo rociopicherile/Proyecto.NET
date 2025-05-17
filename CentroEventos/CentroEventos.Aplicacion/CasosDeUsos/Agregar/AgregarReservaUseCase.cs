@@ -1,11 +1,13 @@
 // Código corregido por Sebas
+namespace CentroEventos.Aplicacion.Agregar;
 
 
 using System;
 using System.Linq.Expressions;
 using CentroEventos.Aplicacion.Excepciones;
-
-namespace CentroEventos.Aplicacion.Agregar;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Validadores;
 
 public class AgregarReservaUseCase(IRepositorioReserva repo,ReservaValidador validador,IServicioAutorizacion autorizacion)
 {

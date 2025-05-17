@@ -1,10 +1,12 @@
 //Código corregido por Sebas
+namespace CentroEventos.Aplicacion.Agregar;
 
 using System;
 using System.ComponentModel.DataAnnotations;
 using CentroEventos.Aplicacion.Excepciones;
-
-namespace CentroEventos.Aplicacion.Agregar;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Validadores;
 
 public class AgregarEventoDeportivoUseCase(IRepositorioEventoDeportivo repo,EventoDeportivoValidador validador,IServicioAutorizacion autorizacion)
 {
