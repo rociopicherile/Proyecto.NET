@@ -1,0 +1,5 @@
+C:\Users\USUARIO\Documents\repositorio\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net10.0\CentroEventos.Aplicacion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\USUARIO\Documents\repositorio\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net10.0\CentroEventos.Aplicacion.AssemblyInfoInputs.cache
+C:\Users\USUARIO\Documents\repositorio\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net10.0\CentroEventos.Aplicacion.AssemblyInfo.cs
+C:\Users\USUARIO\Documents\repositorio\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net10.0\CentroEventos.Aplicacion.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\Documents\repositorio\CentroEventos\CentroEventos.Aplicacion\obj\Debug\net10.0\CentroEventos.Aplicacion.sourcelink.json
