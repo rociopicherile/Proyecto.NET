@@ -1,27 +1,45 @@
-// Esto lo hizo Sebas
+// corregido por sebas
 
-public class EventoDeportivoValidador(IRepositorioPersona repo)
+using System;
+using CentroEventos.Aplicacion.Excepciones;
+
+namespace CentroEventos.Aplicacion;
+
+public class EventoDeportivoValidador(IRepositorioEventoDeportivo repo,IRepositorioPersona r, IRepositorioReserva repoReserva)
 {
-    public bool Validar(EventoDeportivo evento, out string mensaje){
-        mensaje="";
-        if(string.IsNullOrWhiteSpace(evento.Nombre)){
-            mensaje+="ERROR. No se puede ingresar un nombre vacio.\n";
-        }
-        if(string.IsNullOrWhiteSpace(evento.Descripcion)){
-            mensaje+="ERROR. No se puede ingresar una descripcion vacia.\n";
-        }
-        if(evento.FechaHoraInicio<DateTime.Now){
-            mensaje+="ERROR. La fecha tiene que ser actual o posterior.\n";
-        }
-        if(evento.DuracionHoras<=0){
-            mensaje+="ERROR. La duracion debe ser mayor a cero.\n";
-        }
-        if (evento.CupoMaximo<= 0){
-            mensaje += "ERROR. El cupo máximo debe ser mayor a cero.\n";
-        }
-        if(!repo.ExisteId(evento.Responsableld)){
-            mensaje+="ERROR. El responsable no corresponde a una persona existenete.\n";
-        }
-        return (mensaje=="");
+    public bool ValidarNombre(string nombre)
+    {
+        return !(string.IsNullOrWhiteSpace(nombre));
+    }
+    public bool ValidarDescripcion(string descripcion)
+    {
+        return !(string.IsNullOrWhiteSpace(descripcion));
+    }
+    public bool ValidarCupoMaximo(int n)
+    {
+        return (n > 0);
+    }
+    public bool ValidarFecha(DateTime fecha)
+    {
+        return !(fecha < DateTime.Now);
+    }
+    public bool ValidarDuracion(double duracion)
+    {
+        return !(duracion <= 0);
+    }
+    public bool ValidarResponsable(int id)
+    {
+        return r.ExisteId(id);
+    }
+    public bool ValidarExiste(int id)//unicamente para el modificar y eliminar
+    {
+        return repo.ExisteId(id);
+    }
+    public bool ValidarSiExpiro(int id)
+    {
+        return repo.Expiro(id);
+    }
+    public bool ValidarNoTieneReservaAsociada(int id){
+        return !repoReserva.EventoTieneReservaAsociada(id);
     }
 }

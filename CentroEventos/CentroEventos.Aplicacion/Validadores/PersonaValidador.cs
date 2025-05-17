@@ -1,37 +1,55 @@
+// corregido por sebas
+
+using System;
+using System.ComponentModel;
+using System.Threading.Tasks.Dataflow;
+
 namespace CentroEventos.Aplicacion;
 
-public class PersonaValidador {
+public class PersonaValidador(IRepositorioPersona repositorio, IRepositorioReserva repoReserva, IRepositorioEventoDeportivo repoED)
+{
+    public bool ValidarNombre(string nombre)
+    {
+        return !(string.IsNullOrWhiteSpace(nombre));
+    }
+    public bool ValidarApellido(string apellido)
+    {
 
-    public bool Validar(Persona persona, IRepositorioPersona repositorio,out string mensajeError){
+        return !(string.IsNullOrWhiteSpace(apellido));
 
-        mensajeError = "";
-        if(string.IsNullOrWhiteSpace(persona.Nombre)){
+    }
 
-            mensajeError += "Nombre del persona inválido.\n";
-        }
+    public bool ValidarDNI(string dni)
+    {
 
-        if(string.IsNullOrWhiteSpace(persona.Apellido)){
+        return !(string.IsNullOrWhiteSpace(dni));
+    }
+    public bool ValidarEmail(string email)
+    {
 
-            mensajeError += "Apellido del persona inválido.\n";
-        }
+        return !(string.IsNullOrWhiteSpace(email));
+    }
 
-        if(string.IsNullOrWhiteSpace(persona.DNI)){
+    public bool ValidarExisteEmail(string email)
+    {
+        return repositorio.ExisteEmail(email);
+    }
 
-            mensajeError += "DNI del persona inválido.\n";
-        }
-        else if (repositorio.ExisteDNI){
-            mensajeError += "El DNI ya está registrado en otra persona.\n";
-        }
+    public bool ValidarExisteDni(string dni)
+    {
+        return repositorio.ExisteDNI(dni);
+    }
 
-        if(string.IsNullOrWhiteSpace(persona.Email)){
+    public bool ValidarExiste(int id)//validacion solo para el eliminar y modificar
+    {
+        return repositorio.ExisteId(id);
+    }
 
-            mensajeError += "Email del persona inválido.\n";
-        }
-        else if (repositorio.ExisteEmail){
-            
-            mensajeError += "El email ya está registrado en otra persona.\n";
-        }
+    public bool ValidarNoTieneReservaAsociada(int id){ //validación para eliminar
+        return !repoReserva.PersonaTieneReservaAsociada(id);
+    }
 
-        return (mensajeError == "");
+    public bool ValidarNoEsResponsableDeEventoDeportivo(int id){ //validación para eliminar
+        return !repoED.EsResponsableDeEventoDeportivo(id);
     }
 }

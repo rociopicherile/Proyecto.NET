@@ -7,6 +7,10 @@ public interface IRepositorioEventoDeportivo
     List<EventoDeportivo> ListarEventoDeportivo();
     void ActualizarEventoDeportivo(EventoDeportivo ed);
 
+
+    public bool ExisteId(int id);
+    public int DevolverCupoMaximo(int id);
+    public bool Expiro(int id);
     EventoDeportivo BuscarEvento(int id);
-    // Completar
+    public bool EsResponsableDeEventoDeportivo(int id);
 }

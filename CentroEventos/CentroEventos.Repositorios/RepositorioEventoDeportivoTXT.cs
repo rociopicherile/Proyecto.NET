@@ -1,7 +1,9 @@
 // Hecho por Sebas: Agregar y Listar
 // Hecho por Mati: Actualizar y ID Único
-// Falta: EliminarEventoDeportivo, etc
 // hecho por german : agregar el using y el namespace y metodo de buscar un evento 
+
+// Terminado CREO
+
 namespace CentroEventos.Repositorios;
 using CentroEventos.Aplicacion;
 public class RepositorioEventoDeportivoTXT : IRepositorioEventoDeportivo
@@ -101,6 +103,43 @@ public class RepositorioEventoDeportivoTXT : IRepositorioEventoDeportivo
         }
     }
 
+    public void EliminarEventoDeportivo(int Id)
+    {//CONSIDERAR QUE SI HAGO UN BORRADO LOGICO TENGO QUE CAMBIAR EL LISTAR.
+        bool encontre = false;// va verificar si se elimino o no.
+        using var sr = new StreamReader(_nombreArchivo);//lo voy a usar para ir leyendo todo mi archivo.
+        using var sw = new StreamWriter("temporal.txt", false);// aca voy a ir escribiendo todo el archivo, con la unica diferencia que concateno 
+        while (!sr.EndOfStream)
+        {                            // un "*" al evento a borrar(borrado logico).
+            List<string> l = new List<string>();// creo una lista para ir guardo los strign que leo y ver si encontre mi id accediendo a l[0].
+            for (int i = 0; i < 7; i++)
+            {
+                l.Add(sr.ReadLine() ?? "");//voy guardando las lineas que leo a la lista de strings.
+            }
+            if (!l[0].StartsWith("*") && int.Parse(l[0].ToString()) == Id)
+            {// verifico si es el id que busco, pero antes verifico que ya no este borrado.
+                l[0] = "*" + l[0];// si la condicion es true, hago el borrado logico.
+                encontre = true;
+            }
+            foreach (string e in l)
+            {
+                sw.WriteLine(e);//voy escribiendo en mi archivo temporal linea por linea.
+            }
+
+        }
+        if (encontre)
+        {
+            Console.WriteLine("Se elimino con exito el evento");
+            File.Delete(_nombreArchivo);//borro el archivo ya que no me sirve mas.
+            File.Move("temporal.txt", _nombreArchivo);//hago el intercambio con el archivo temporal.
+        }
+        else
+        {
+            Console.WriteLine("No se encontro el evento a eliminar");
+            File.Delete("temporal.txt");//borro el archivo temporal si no lo encontre.
+        }
+    }
+
+
     public EventoDeportivo BuscarEvento(int id)// no se si esta bien
     {
         var eventoDeportivo = this.ListarEventoDeportivo();
@@ -128,8 +167,45 @@ public class RepositorioEventoDeportivoTXT : IRepositorioEventoDeportivo
         return false;
     }
 
-    /*public bool EsResponsableDeEventoDeportivo (int id){
+    public bool EsResponsableDeEventoDeportivo(int Id){
         List <EventoDeportivo> listaEventos = ListarEventoDeportivo();
-    }*/
+
+        int i = 0;
+        bool encontre = false;
+
+        //Recorro a la list de eventos deportivos, buscando si exista alguno que tenga el mismo ResponsableId
+        while (i < listaEventos.Count && !encontre){
+            if (listaEventos[i].ResponsableId == Id){
+                encontre = true;
+            }
+            i++;
+        }
+
+        return encontre;
+    }
+
+    public int DevolverCupoMaximo(int id)
+    {
+        foreach (EventoDeportivo e in this.ListarEventoDeportivo())
+        {
+            if (e.Id == id)
+            {
+                return e.CupoMaximo;
+            }
+        }
+        return 0;
+    }
+
+    public bool Expiro(int id)
+    {
+        foreach (EventoDeportivo e in this.ListarEventoDeportivo())
+        {
+            if (e.Id == id)
+            {
+                return e.FechaHoraInicio < DateTime.Now;
+            }
+        }
+        return false;
+    }
 
 }

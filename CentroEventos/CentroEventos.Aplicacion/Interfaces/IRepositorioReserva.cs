@@ -8,6 +8,10 @@ public interface IRepositorioReserva
     public void AgregarReserva(Reserva r);
     public void EliminarReserva(int id);
     public void ActualizarReserva(Reserva r);
-    public bool Reservo(Reserva r);
+
+    public bool PersonaTieneReservaAsociada(int id);
+    public bool EventoTieneReservaAsociada(int id);
+    public bool ExisteId(int id);
+    bool Reservo(int idP, int idE);
     public int CantidadDeReservas(int id);//devuelve la cantidad de personas que reservaron en un evento cuyo id se pasa por parametro
 }

@@ -2,25 +2,23 @@
 "No puede eliminarse un EventoDeportivo si existen Reservas asociadas al mismo
 (independientemente del estado de las reservas)."
 
-Supongo que hay que recorrer al archivo de Reservas verificando si existe el evento deportivo
-
-Comentario: No sé si está bien esto que hice. Preguntar en la práctica
-
+Corregido por mí (Rocío Belén)
 */
 
 using System;
+using CentroEventos.Aplicacion.Excepciones;
 
 namespace CentroEventos.Aplicacion.Eliminar;
 
-public class EliminarEventoDeportivoUseCase (IRepositorioEventoDeportivo repoED, IRepositorioReserva repoR){
-
-    public void Ejecutar(int Id){
-        // Si existe el evento deportivo y no tiene ninguna reserva asociada
-        if (repoED.ExisteId(Id) && !repoR.ExisteEventoDeportivoAsociado(Id)){
-            repoED.EliminarEventoDeportivo(id);
+public class EliminarEventoDeportivoUseCase(IRepositorioEventoDeportivo repo,EventoDeportivoValidador validador)
+{
+    public void Ejecutar(int id){ 
+        if(!validador.ValidarExiste(id)){
+            throw new EntidadNotFoundException("El evento que se intenta elimnar no esta registrado.");
         }
-        else{
-            throw new OperacionInvalidaException("No es posible eliminar al evento pues tiene al menos una reserva que se le corresponde");
+        if(!validador.ValidarNoTieneReservaAsociada(id)){
+            throw new OperacionInvalidaException("El evento que se intenta eliminar cuenta con al menos una reserva asociada.");
         }
+        repo.EliminarEventoDeportivo(id);
     }
 }

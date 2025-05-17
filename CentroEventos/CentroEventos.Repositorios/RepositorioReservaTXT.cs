@@ -117,16 +117,21 @@ public class RepositorioReservaTXT : IRepositorioReserva
             File.Delete("temporal.txt");//borro el archivo temporal si no lo encontre.
         }
     }
-    public bool Reservo(Reserva r){
-        foreach(Reserva n in this.ListarReserva()){
-            if(n.Id== r.Id){
-                if(n.EventoDeportivoId== r.EventoDeportivoId){
+    public bool Reservo(int idP, int idE)
+    {
+        foreach (Reserva n in this.ListarReserva())
+        {
+            if (n.PersonaId == idP)
+            {
+                if (n.EventoDeportivoId == idE)
+                {
                     return true;
                 }
             }
         }
         return false;
     }
+
     public int CantidadDeReservas(int id){//devuelve la cantidad de personas que reservaron en un evento cuyo id se pasa por parametro
         int total=0;
         foreach(Reserva r in this.ListarReserva()){
@@ -137,7 +142,7 @@ public class RepositorioReservaTXT : IRepositorioReserva
         return total;
     }
 
-    public bool TieneReservaAsociada(int Id){
+    public bool EventoTieneReservaAsociada(int Id){
         List <Reserva> listaReservas = ListarReserva();
 
         int i = 0;
@@ -146,6 +151,23 @@ public class RepositorioReservaTXT : IRepositorioReserva
         //Recorro a la list de reservas, buscando si exista alguna que tenga el mismo EventoDeportivoId
         while (i < listaReservas.Count && !encontre){
             if (listaReservas[i].EventoDeportivoId == Id){
+                encontre = true;
+            }
+            i++;
+        }
+
+        return encontre;
+    }
+
+    public bool PersonaTieneReservaAsociada(int Id){
+        List <Reserva> listaReservas = ListarReserva();
+
+        int i = 0;
+        bool encontre = false;
+
+        //Recorro a la list de reservas, buscando si exista alguna que tenga el mismo PersonaId
+        while (i < listaReservas.Count && !encontre){
+            if (listaReservas[i].PersonaId == Id){
                 encontre = true;
             }
             i++;
