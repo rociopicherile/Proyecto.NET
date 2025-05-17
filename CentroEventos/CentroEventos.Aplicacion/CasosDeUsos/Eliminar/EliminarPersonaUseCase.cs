@@ -23,6 +23,6 @@ public class EliminarPersonaUseCase(IRepositorioPersona repoP, PersonaValidador 
         if(!validador.ValidarNoEsResponsableDeEventoDeportivo(id)){
             throw new OperacionInvalidaException("La persona que se intenta eliminar es responsable de al menos un evento deportivo.")
         }
-        repo.EliminarEventoDeportivo(id);
+        repoP.EliminarPersona(id);
     }
 }
