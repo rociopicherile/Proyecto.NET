@@ -20,7 +20,7 @@ public class ListarAsistenciaAEventoUseCase(IRepositorioReserva res, IRepositori
             } 
 
         }
-
+                
         return resultado;
     }
 

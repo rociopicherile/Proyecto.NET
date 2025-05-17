@@ -5,9 +5,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CentroEventos.Aplicacion.Agregar;
 
-public class AgregarPersonaUseCase(IRepositorioPersona repo,PersonaValidador validador)
+public class AgregarPersonaUseCase(IRepositorioPersona repo,PersonaValidador validador,IServicioAutorizacion autorizacion)
 {
-    public void Ejecutar(Persona p){
+    public void Ejecutar(int IdUsuario,Persona p){
+        if (!autorizacion.PoseeElPermiso(IdUsuario, permiso))
+        {
+            throw new FalloAutorizacionException("Usuario no tiene Autorizacion");
+        }
         if (validador.ValidarNombre(p.Nombre))
         {
             throw new ValidacionException("No se ingreso el nombre de la Persona");

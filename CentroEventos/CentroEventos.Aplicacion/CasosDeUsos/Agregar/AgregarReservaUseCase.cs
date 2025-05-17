@@ -7,9 +7,13 @@ using CentroEventos.Aplicacion.Excepciones;
 
 namespace CentroEventos.Aplicacion.Agregar;
 
-public class AgregarReservaUseCase(IRepositorioReserva repo,ReservaValidador validador)
+public class AgregarReservaUseCase(IRepositorioReserva repo,ReservaValidador validador,IServicioAutorizacion autorizacion)
 {
-    public void Ejecutar(Reserva r){
+    public void Ejecutar(int IdUsuario,Reserva r){
+        if (!autorizacion.PoseeElPermiso(IdUsuario, permiso))
+        {
+            throw new FalloAutorizacionException("Usuario no tiene Autorizacion");
+        }
         if (!validador.ValidarEventoDeportivoReservado(r.EventoDeportivoId))
         {
             throw new EntidadNotFoundException("El evento deportivo al que se quiere reservar no existe.");

@@ -11,17 +11,22 @@ using CentroEventos.Aplicacion.Excepciones;
 
 namespace CentroEventos.Aplicacion.Eliminar;
 
-public class EliminarPersonaUseCase(IRepositorioPersona repoP, PersonaValidador validador)
+public class EliminarPersonaUseCase(IRepositorioPersona repoP, PersonaValidador validador,IServicioAutorizacion autorizacion)
 {
-    public void Ejecutar(int id){ 
-        if(!validador.ValidarExiste(id)){
+    public void Ejecutar(int IdUsuario,int id){
+        if (!autorizacion.PoseeElPermiso(IdUsuario, permiso))
+        {
+            throw new FalloAutorizacionException("Usuario no tiene Autorizacion");
+        } 
+        if (!validador.ValidarExiste(id))
+        {
             throw new EntidadNotFoundException("La persona que se intenta eliminar no está registrada.");
         }
         if(!validador.ValidarNoTieneReservaAsociada(id)){
             throw new OperacionInvalidaException("La persona que se intenta eliminar cuenta con al menos una reserva asociada.");
         }
         if(!validador.ValidarNoEsResponsableDeEventoDeportivo(id)){
-            throw new OperacionInvalidaException("La persona que se intenta eliminar es responsable de al menos un evento deportivo.")
+            throw new OperacionInvalidaException("La persona que se intenta eliminar es responsable de al menos un evento deportivo.");
         }
         repoP.EliminarPersona(id);
     }
