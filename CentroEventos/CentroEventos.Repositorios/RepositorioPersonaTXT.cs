@@ -116,7 +116,7 @@ public class RepositorioPersonaTXT : IRepositorioPersona
         // Por cada elemento de mi lista de Personas, lo añado como string a mi lista de strings 
         foreach (var p in lista)
         {
-            lineas.Add($"{p.Id}|{p.DNI}|{p.Nombre}|{p.Apellido}|{p.Telefono}|{p.Email}");
+            lineas.Add($"{p.Id}|{p.DNI}|{p.Nombre} {p.Apellido}|{p.Telefono}|{p.Email}");
         }
 
         // 5. Sobrescribir al archivo con las líneas nuevas

@@ -48,10 +48,17 @@ var listarEvento = new ListarEventoDeportivoUseCase(repoEventoDeportivo);
 var listarEventoConCupoDisponible = new ListarEventoDeportivoConCupoDisponibleUseCase(repoEventoDeportivo,repoReserva);
 var listarAsistencia = new ListarAsistenciaAEventoUseCase(repoReserva, repoPersona, repoEventoDeportivo);
 
-
+// (4) Esto es para vaciar los archivos de texto cada vez que se ejecuta el programa
 File.WriteAllText("personas.txt", string.Empty);
 File.WriteAllText("eventoDeportivo.txt", string.Empty);
 File.WriteAllText("reservas.txt", string.Empty);
+
+
+// (5) Acá comienzan los casos de prueba (agregar, actualizar, listar y eliminar)
+
+// LOS AGREGAR: FUNCIONAN TODOS. Solo me lanza error cuando quiero agregar más de una reserva.
+// LOS ACTUALIZAR: FUNCIONA SOLO EL DE PERSONA
+
 
 //agregar Persona
 try
@@ -87,7 +94,6 @@ catch (DuplicadoException ex){Console.WriteLine(ex.Message);}
 
 
 //agregar Evento
-
 try
 {
     agregarEvento.Ejecutar(1, new EventoDeportivo{
@@ -139,36 +145,64 @@ catch (ValidacionException ex) { Console.WriteLine(ex.Message); }
 
 
 
-
-
-/*
-// actualizar Persona
-
+// actualizar Persona (le cambio el mail y el teléfono a Juan Peréz)
 try
 {
-    modificarPersona.Ejecutar(1, new Persona());
+    modificarPersona.Ejecutar(1, new Persona
+    {
+        Id = 1,
+        DNI = "12345678",
+        Nombre = "Juan",
+        Apellido = "Pérez",
+        Email = "juanActualizado@example.com",
+        Telefono = "2393-4941"
+    });
 }
 catch (FalloAutorizacionException ex) {Console.WriteLine(ex.Message);}
 catch (EntidadNotFoundException ex) {Console.WriteLine(ex.Message);}
 
-// actulizar Reserva
 
+
+// actualizar Reserva (actualizo la reserva de Id = 1 y le cambio el estado asistencia)
+// NO ME FUNCIONA. LANZA ERROR
+/*
 try
 {
-    modificarReserva.Ejecutar(1, new Reserva());
+    modificarReserva.Ejecutar(1, new Reserva{
+        Id = 1,
+        PersonaId = 1,
+        EventoDeportivoId = 1,
+        FechaAltaReserva = DateTime.Now,
+        EstadoAsistencia = EstadoAsistencia.Asistio,
+    });
 }
 catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
 catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
+*/
 
-// actulizar Evento
 
+// Actualizar Evento Deportivo (actualizo evento Id = 2 y le cambio la duración horas y la descripción)
+// No me funcionó tampoco
+/*
 try
 {
-    modificarEvento.Ejecutar(1, new EventoDeportivo());
+    modificarEvento.Ejecutar(1, new EventoDeportivo{
+        Id = 2,
+        Nombre = "Voley",
+        Descripcion = "Descripción actualizada aquí",
+        FechaHoraInicio = new DateTime(2025, 11, 15, 13, 0, 0), // 15/11/2025 13:00 AM,
+        DuracionHoras = 3.5, // 1 hora y 30 minutos
+        CupoMaximo = 200,
+        ResponsableId = 1 // ID del organizador
+    });
 }
 catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
 catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
 catch (OperacionInvalidaException ex) { Console.WriteLine(ex.Message); }
+
+
+
+
 
 // eliminar Persona
 
@@ -179,6 +213,8 @@ try
 catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
 catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
 catch (OperacionInvalidaException ex) { Console.WriteLine(ex.Message); }
+
+
 
 // eliminar Reserva
 
