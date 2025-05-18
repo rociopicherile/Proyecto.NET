@@ -135,3 +135,11 @@ try
 catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
 catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
 catch (OperacionInvalidaException ex) { Console.WriteLine(ex.Message); }
+
+//listar no se si tiene try and catch
+
+listarPersona.Ejecutar();
+listarReserva.Ejecutar();
+listarEvento.Ejecutar();
+listarAsistencia.Ejecutar();
+listarEventoConCupoDisponible.Ejecutar();
