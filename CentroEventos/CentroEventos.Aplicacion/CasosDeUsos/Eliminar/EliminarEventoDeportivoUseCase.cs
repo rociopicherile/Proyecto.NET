@@ -15,7 +15,7 @@ using CentroEventos.Aplicacion.Validadores;
 public class EliminarEventoDeportivoUseCase(IRepositorioEventoDeportivo repo,EventoDeportivoValidador validador,IServicioAutorizacion autorizacion)
 {
     public void Ejecutar(int IdUsuario,int id){ 
-        if (!autorizacion.PoseeElPermiso(IdUsuario, permiso))
+        if (!autorizacion.PoseeElPermiso(IdUsuario, Permiso.EventoBaja))
         {
             throw new FalloAutorizacionException("Usuario no tiene Autorizacion");
         }

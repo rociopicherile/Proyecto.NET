@@ -9,11 +9,11 @@ using CentroEventos.Aplicacion.Validadores;
 
 public class EventoDeportivoValidador(IRepositorioEventoDeportivo repo,IRepositorioPersona r, IRepositorioReserva repoReserva)
 {
-    public bool ValidarNombre(string nombre)
+    public bool ValidarNombre(string? nombre)
     {
         return !(string.IsNullOrWhiteSpace(nombre));
     }
-    public bool ValidarDescripcion(string descripcion)
+    public bool ValidarDescripcion(string? descripcion)
     {
         return !(string.IsNullOrWhiteSpace(descripcion));
     }

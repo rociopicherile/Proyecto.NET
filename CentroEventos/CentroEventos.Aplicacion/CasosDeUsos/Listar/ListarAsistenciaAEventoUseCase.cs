@@ -11,8 +11,8 @@ public class ListarAsistenciaAEventoUseCase(IRepositorioReserva res, IRepositori
 
         var resultado = new List<Persona>();
 
-        res.ListarReserva();
-        foreach (Reserva reserva in res)
+        List <Reserva> r = res.ListarReserva();
+        foreach (Reserva reserva in r)
         {
             if (reserva.EstadoAsistencia == EstadoAsistencia.Asistio)// no se si esta bien
             {

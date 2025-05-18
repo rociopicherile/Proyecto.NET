@@ -5,7 +5,16 @@
 // Terminado CREO
 
 namespace CentroEventos.Repositorios;
+using CentroEventos.Aplicacion.Excepciones;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Validadores;
+
+using System;
 using CentroEventos.Aplicacion;
+using System.Collections.Generic;
+using System.IO;
+using System.Numerics;
 public class RepositorioEventoDeportivoTXT : IRepositorioEventoDeportivo
 {
     readonly string _nombreArchivo = "eventoDeportivo.txt";
@@ -140,19 +149,9 @@ public class RepositorioEventoDeportivoTXT : IRepositorioEventoDeportivo
     }
 
 
-    public EventoDeportivo BuscarEvento(int id)// no se si esta bien
+    public EventoDeportivo BuscarEvento(int id)
     {
-        var eventoDeportivo = this.ListarEventoDeportivo();
-        int i = 0;
-
-        while (i < eventoDeportivo.Count)
-        {
-            if (eventoDeportivo[i].Id == id)
-            {
-                return eventoDeportivo[i];
-            }
-            i++;
-        }
+        return this.ListarEventoDeportivo().First(e => e.Id == id);
     }
 
     public bool ExisteId(int id)
@@ -167,15 +166,18 @@ public class RepositorioEventoDeportivoTXT : IRepositorioEventoDeportivo
         return false;
     }
 
-    public bool EsResponsableDeEventoDeportivo(int Id){
-        List <EventoDeportivo> listaEventos = ListarEventoDeportivo();
+    public bool EsResponsableDeEventoDeportivo(int Id)
+    {
+        List<EventoDeportivo> listaEventos = ListarEventoDeportivo();
 
         int i = 0;
         bool encontre = false;
 
         //Recorro a la list de eventos deportivos, buscando si exista alguno que tenga el mismo ResponsableId
-        while (i < listaEventos.Count && !encontre){
-            if (listaEventos[i].ResponsableId == Id){
+        while (i < listaEventos.Count && !encontre)
+        {
+            if (listaEventos[i].ResponsableId == Id)
+            {
                 encontre = true;
             }
             i++;

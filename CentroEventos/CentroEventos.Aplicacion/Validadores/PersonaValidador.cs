@@ -11,23 +11,23 @@ using CentroEventos.Aplicacion.Validadores;
 
 public class PersonaValidador(IRepositorioPersona repositorio, IRepositorioReserva repoReserva, IRepositorioEventoDeportivo repoED)
 {
-    public bool ValidarNombre(string nombre)
+    public bool ValidarNombre(string? nombre)
     {
         return !(string.IsNullOrWhiteSpace(nombre));
     }
-    public bool ValidarApellido(string apellido)
+    public bool ValidarApellido(string? apellido)
     {
 
         return !(string.IsNullOrWhiteSpace(apellido));
 
     }
 
-    public bool ValidarDNI(string dni)
+    public bool ValidarDNI(string? dni)
     {
 
         return !(string.IsNullOrWhiteSpace(dni));
     }
-    public bool ValidarEmail(string email)
+    public bool ValidarEmail(string? email)
     {
 
         return !(string.IsNullOrWhiteSpace(email));

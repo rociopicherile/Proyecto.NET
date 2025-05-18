@@ -4,7 +4,18 @@ Esta clase está terminada, no falta nada (creo)
 */
 
 namespace CentroEventos.Repositorios;
+using CentroEventos.Aplicacion.Excepciones;
+using CentroEventos.Aplicacion.Interfaces;
+using CentroEventos.Aplicacion.Entidades;
+using CentroEventos.Aplicacion.Validadores;
+
+using System;
 using CentroEventos.Aplicacion;
+using System.Collections.Generic;
+using System.IO;
+using System.Numerics;
+using System.Linq;
+
 public class RepositorioPersonaTXT : IRepositorioPersona
 {
     readonly string _nombreArch = "personas.txt";
@@ -13,12 +24,12 @@ public class RepositorioPersonaTXT : IRepositorioPersona
 
     public RepositorioPersonaTXT()
     {
-        using var sr = StreamReader(_archivoIds);
+        using var sr = new StreamReader(_archivoIds);
         _idUltimo = int.Parse(sr.ReadToEnd());
     }
     public void AgregarPersona(Persona persona)
     {
-        using var sw2 = StreamWriter(_archivoIds, false);
+        using var sw2 = new StreamWriter(_archivoIds, false);
         _idUltimo++;
         persona.Id = _idUltimo;
 
@@ -115,7 +126,7 @@ public class RepositorioPersonaTXT : IRepositorioPersona
     {
         foreach (Persona p in this.ListarPersona())
         {
-            if (p.dni == dni)
+            if (p.DNI == dni)
             {
                 return true;
             }
@@ -147,19 +158,9 @@ public class RepositorioPersonaTXT : IRepositorioPersona
         return false;
     }
 
-    public Persona BuscarPersona(int id)// no se si esta bien
+    public Persona BuscarPersona(int id)
     {
-        var personas = this.ListarPersona();
-        int i = 0;
-    
-        while (i < personas.Count)
-        {
-        if (personas[i].Id == id)
-        {
-            return personas[i];
-        }
-            i++;
-        }
+        return this.ListarPersona().First(p => p.Id == id);
     }
 
 }

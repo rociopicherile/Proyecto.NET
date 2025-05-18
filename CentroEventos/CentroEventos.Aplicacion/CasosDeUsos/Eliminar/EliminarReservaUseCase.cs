@@ -10,7 +10,7 @@ using CentroEventos.Aplicacion.Validadores;
 public class EliminarReservaUseCase(IRepositorioReserva repo,ReservaValidador validador,IServicioAutorizacion autorizacion)
 {
     public void Ejecutar(int IdUsuario,int id){
-        if (!autorizacion.PoseeElPermiso(IdUsuario, permiso))
+        if (!autorizacion.PoseeElPermiso(IdUsuario, Permiso.ReservaeBaja))
         {
             throw new FalloAutorizacionException("Usuario no tiene Autorizacion");
         }
