@@ -24,7 +24,7 @@ public class AgregarEventoDeportivoUseCase(IRepositorioEventoDeportivo repo,Even
         {
             throw new ValidacionException("No se ingreso la Descripcion del evento.");
         }
-        if (validador.ValidarCupoMaximo(e.CupoMaximo))
+        if (!validador.ValidarCupoMaximo(e.CupoMaximo))
         {
             throw new ValidacionException("Cupo Maximo invalido, debe ser mayor a 0.");
         }

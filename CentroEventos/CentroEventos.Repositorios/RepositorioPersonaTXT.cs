@@ -66,7 +66,7 @@ public class RepositorioPersonaTXT : IRepositorioPersona
         File.WriteAllLines(_nombreArch, nuevasLineas);
     }
 
-
+    
     public List<Persona> ListarPersona()
     {
         char[] delimitadores = { '|', ' ' };
@@ -76,7 +76,7 @@ public class RepositorioPersonaTXT : IRepositorioPersona
         {
             Persona persona = new Persona();
             // Separo a la línea con Split y guardo cada campo en un vector de string
-            string[] linea = sr.ReadLine().Split(delimitadores);
+            string[] linea = (sr.ReadLine() ?? " ").Split(delimitadores);
 
             // Introduzco cada elemento del vector en mi objeto persona
             persona.Id = int.Parse(linea[0]);

@@ -1,1 +1,2 @@
-
+1|12345678|Juan Pérez|555-1234|juan@example.com
+2|2323842|Stevie Wonder|233-4904|Stevie@example.com

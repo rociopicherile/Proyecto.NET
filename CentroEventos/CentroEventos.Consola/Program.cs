@@ -49,6 +49,10 @@ var listarEventoConCupoDisponible = new ListarEventoDeportivoConCupoDisponibleUs
 var listarAsistencia = new ListarAsistenciaAEventoUseCase(repoReserva, repoPersona, repoEventoDeportivo);
 
 
+File.WriteAllText("personas.txt", string.Empty);
+File.WriteAllText("eventos.txt", string.Empty);
+File.WriteAllText("reservas.txt", string.Empty);
+
 //agregar Persona
 try
 {
@@ -65,29 +69,61 @@ catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
 catch (ValidacionException ex){Console.WriteLine(ex.Message);}
 catch (DuplicadoException ex){Console.WriteLine(ex.Message);}
 
+//agregar Persona 2
+try
+{
+    agregarPersona.Ejecutar(1, new Persona
+    {
+        DNI = "2323842",
+        Nombre = "Stevie",
+        Apellido = "Wonder",
+        Email = "Stevie@example.com",
+        Telefono = "233-4904"
+    });
+}
+catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
+catch (ValidacionException ex){Console.WriteLine(ex.Message);}
+catch (DuplicadoException ex){Console.WriteLine(ex.Message);}
 
-/*
-//agregar Reserva
+
+//agregar Evento
 
 try
 {
-    agregarReserva.Ejecutar(1, new Reserva());
+    agregarEvento.Ejecutar(1, new EventoDeportivo{
+        Nombre = "Fútbol",
+        Descripcion = "Descripción aquí",
+        FechaHoraInicio = new DateTime(2025, 11, 15, 9, 0, 0), // 15/11/2025 09:00 AM,
+        DuracionHoras = 1.5, // 1 hora y 30 minutos
+        CupoMaximo = 200,
+        ResponsableId = 1 // ID del organizador
+    });
+}
+catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
+catch (ValidacionException ex){Console.WriteLine(ex.Message);}
+catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
+
+//Agregar Reserva
+
+/*
+try
+{
+    agregarReserva.Ejecutar(1, new Reserva{
+        EventoDeportivoId = "1",
+        FechaAltaReserva = DateTime.Now,
+        EstadoAsistencia = "",
+    });
 }
 catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
 catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
 catch (DuplicadoException ex) { Console.WriteLine(ex.Message); }
 catch (ValidacionException ex) { Console.WriteLine(ex.Message); }
 
-//agregar Evento
 
-try
-{
-    agregarEvento.Ejecutar(1, new EventoDeportivo());
-}
-catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
-catch (ValidacionException ex){Console.WriteLine(ex.Message);}
-catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
 
+
+
+/*
 // actualizar Persona
 
 try
