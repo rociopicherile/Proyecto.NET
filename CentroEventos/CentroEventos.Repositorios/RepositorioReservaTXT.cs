@@ -37,7 +37,7 @@ public class RepositorioReservaTXT : IRepositorioReserva
             r.PersonaId = int.Parse(sr.ReadLine() ?? "");
             r.EventoDeportivoId = int.Parse(sr.ReadLine() ?? "");
             r.FechaAltaReserva = DateTime.Parse(sr.ReadLine() ?? "");
-            r.EstadoAsistencia = (Reserva.EstadoAsistencia)Enum.Parse(typeof(Reserva.Asistencia), sr.ReadLine() ?? "");//
+            r.EstadoAsistencia = (EstadoAsistencia)Enum.Parse(typeof(EstadoAsistencia), sr.ReadLine() ?? "");//
             resultado.Add(r);
         }
         return resultado;
@@ -75,7 +75,7 @@ public class RepositorioReservaTXT : IRepositorioReserva
             temp.PersonaId = int.Parse(sr.ReadLine() ?? "");
             temp.EventoDeportivoId = int.Parse(sr.ReadLine() ?? "");
             temp.FechaAltaReserva = DateTime.Parse(sr.ReadLine() ?? "");
-            temp.EstadoAsistencia = (Reserva.Asistencia)Enum.Parse(typeof(Reserva.Asistencia), sr.ReadLine() ?? "");
+            temp.EstadoAsistencia = (EstadoAsistencia)Enum.Parse(typeof(EstadoAsistencia), sr.ReadLine() ?? "");
 
             if (temp.Id == r.Id)
             {
