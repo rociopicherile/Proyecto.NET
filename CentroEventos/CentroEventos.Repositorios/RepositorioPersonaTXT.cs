@@ -19,14 +19,15 @@ using System.Linq;
 public class RepositorioPersonaTXT : IRepositorioPersona
 {
     readonly string _nombreArch = "personas.txt";
-    readonly string _archivoIds = "IDs.txt";
+    readonly string _archivoIds = "IDsPersonas.txt";
     private int _idUltimo;
 
     public RepositorioPersonaTXT()
     {
-        using var sr = new StreamReader(_archivoIds);
-        _idUltimo = int.Parse(sr.ReadToEnd());
+        using var sw = new StreamWriter(_archivoIds);
+        sw.WriteLine("0");
     }
+
     public void AgregarPersona(Persona persona)
     {
         using var sw2 = new StreamWriter(_archivoIds, false);

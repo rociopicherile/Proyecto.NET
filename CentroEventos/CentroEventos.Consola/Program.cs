@@ -52,12 +52,21 @@ var listarAsistencia = new ListarAsistenciaAEventoUseCase(repoReserva, repoPerso
 //agregar Persona
 try
 {
-    agregarPersona.Ejecutar(1, new Persona());
+    agregarPersona.Ejecutar(1, new Persona
+    {
+        DNI = "12345678",
+        Nombre = "Juan",
+        Apellido = "Pérez",
+        Email = "juan@example.com",
+        Telefono = "555-1234"
+    });
 }
 catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
 catch (ValidacionException ex){Console.WriteLine(ex.Message);}
 catch (DuplicadoException ex){Console.WriteLine(ex.Message);}
 
+
+/*
 //agregar Reserva
 
 try
@@ -143,3 +152,5 @@ listarReserva.Ejecutar();
 listarEvento.Ejecutar();
 listarAsistencia.Ejecutar();
 listarEventoConCupoDisponible.Ejecutar();
+
+*/

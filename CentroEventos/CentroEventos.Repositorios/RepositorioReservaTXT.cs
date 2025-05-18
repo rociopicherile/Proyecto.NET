@@ -23,8 +23,8 @@ public class RepositorioReservaTXT : IRepositorioReserva
     private int _idUltimo;
     public RepositorioReservaTXT()
     {
-        using var sr = new StreamReader(_archivoIds);
-        _idUltimo = int.Parse(sr.ReadToEnd());
+        using var sw = new StreamWriter(_archivoIds);
+        sw.WriteLine("0");
     }
     public List<Reserva> ListarReserva()
     {

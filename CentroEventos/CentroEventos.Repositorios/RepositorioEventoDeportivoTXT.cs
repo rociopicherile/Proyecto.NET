@@ -15,6 +15,7 @@ using CentroEventos.Aplicacion;
 using System.Collections.Generic;
 using System.IO;
 using System.Numerics;
+
 public class RepositorioEventoDeportivoTXT : IRepositorioEventoDeportivo
 {
     readonly string _nombreArchivo = "eventoDeportivo.txt";
@@ -23,8 +24,8 @@ public class RepositorioEventoDeportivoTXT : IRepositorioEventoDeportivo
 
     public RepositorioEventoDeportivoTXT()
     {
-        using var sr = new StreamReader(_archivoIds);
-        _idUltimo = int.Parse(sr.ReadToEnd());
+        using var sw = new StreamWriter(_archivoIds);
+        sw.WriteLine("0");
     }
 
     public List<EventoDeportivo> ListarEventoDeportivo()
