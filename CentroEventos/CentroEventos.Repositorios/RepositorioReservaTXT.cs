@@ -42,27 +42,21 @@ public class RepositorioReservaTXT : IRepositorioReserva
         }
         return resultado;
     }
-    public void AgregarReserva(Reserva r)
+    
+    public void AgregarReserva(Reserva p)
     {
         _idUltimo++;
-        r.Id = _idUltimo;//decirle a belen que cambie la linea de codigo
+        p.Id = _idUltimo;//decirle a belen que cambie la linea de codigo
         using var sw2 = new StreamWriter(_archivoIds, false);
         using var sw = new StreamWriter(_nombreArch, true);
-
-        // Crear una lista de los campos comunes
-        var campos = new List<string>
-        {
-            "ID: "+r.Id.ToString(),
-            "Persona ID: "+r.PersonaId.ToString(),
-            "Actividad deportiva ID: "+r.EventoDeportivoId.ToString(),
-            r.FechaAltaReserva.ToString(),
-            r.EstadoAsistencia.ToString()
-        };
-
-        // Escribir la línea al archivo, separada por coma
-        sw.WriteLine(string.Join(" - ", campos));
-        sw2.WriteLine(_idUltimo);
+        sw.WriteLine(p.Id);
+        sw.WriteLine(p.PersonaId);
+        sw.WriteLine(p.EventoDeportivoId);
+        sw.WriteLine(p.FechaAltaReserva);
+        sw.WriteLine(p.EstadoAsistencia);
     }
+
+
     public void ActualizarReserva(Reserva r)
     {
         Boolean encontrado = false;

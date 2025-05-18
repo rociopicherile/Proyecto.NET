@@ -144,6 +144,23 @@ catch (DuplicadoException ex) { Console.WriteLine(ex.Message); }
 catch (ValidacionException ex) { Console.WriteLine(ex.Message); }
 
 
+//Agregar Reserva 2
+
+try
+{
+    agregarReserva.Ejecutar(1, new Reserva{
+        PersonaId = 1,
+        EventoDeportivoId = 2,
+        FechaAltaReserva = DateTime.Now,
+        EstadoAsistencia = EstadoAsistencia.Pendiente,
+    });
+}
+catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
+catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
+catch (DuplicadoException ex) { Console.WriteLine(ex.Message); }
+catch (ValidacionException ex) { Console.WriteLine(ex.Message); }
+
+
 
 // actualizar Persona (le cambio el mail y el teléfono a Juan Peréz)
 try
