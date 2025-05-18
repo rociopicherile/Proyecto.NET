@@ -5,11 +5,13 @@ Se debe poder registrar personas, eventos deportivos y gestionar reservas
     
 
 using CentroEventos.Aplicacion.Entidades;
-using CentroEventos.Aplicacion.CasosDeUso;
+using CentroEventos.Aplicacion.Validadores;
 using CentroEventos.Repositorios;
 using CentroEventos.Aplicacion.Interfaces;
 using CentroEventos.Aplicacion.Agregar;
 using CentroEventos.Aplicacion;
+using CentroEventos.Aplicacion.Eliminar;
+using CentroEventos.Aplicacion.Excepciones;
 
 // (1) Inicializar repositorios y servicio de autorización
 var repoPersona = new RepositorioPersonaTXT();
@@ -21,3 +23,115 @@ var servicioAutorizacion = new ServicioAutorizacionProvisorio();
 var validadorPersona = new PersonaValidador(repoPersona, repoReserva, repoEventoDeportivo);
 var validadorEventoDeportivo = new EventoDeportivoValidador(repoEventoDeportivo, repoPersona, repoReserva);
 var validadorReserva = new ReservaValidador(repoPersona, repoEventoDeportivo, repoReserva);
+
+//(3) inicializar casos de uso
+
+//create
+var agregarPersona = new AgregarPersonaUseCase(repoPersona, validadorPersona, servicioAutorizacion);
+var agregarReserva = new AgregarReservaUseCase(repoReserva, validadorReserva, servicioAutorizacion);
+var agregarEvento = new AgregarEventoDeportivoUseCase(repoEventoDeportivo,validadorEventoDeportivo,servicioAutorizacion);
+
+//update
+var modificarPersona = new ActualizarPersonaUseCase(repoPersona, validadorPersona, servicioAutorizacion);
+var modificarReserva = new ActualizarReservaUseCase(repoReserva, validadorReserva, servicioAutorizacion);
+var modificarEvento = new ActualizarEventoDeportivoUseCase(repoEventoDeportivo, validadorEventoDeportivo, servicioAutorizacion);
+
+//delete
+var eliminarPersona = new EliminarPersonaUseCase(repoPersona,validadorPersona,servicioAutorizacion);
+var eliminarReserva = new EliminarReservaUseCase(repoReserva,validadorReserva,servicioAutorizacion);
+var eliminarEvento = new EliminarEventoDeportivoUseCase(repoEventoDeportivo, validadorEventoDeportivo, servicioAutorizacion);
+
+//read
+var listarPersona = new ListarPersonaUseCase(repoPersona);
+var listarReserva = new ListarReservaUseCase(repoReserva);
+var listarEvento = new ListarEventoDeportivoUseCase(repoEventoDeportivo);
+var listarEventoConCupoDisponible = new ListarEventoDeportivoConCupoDisponibleUseCase(repoEventoDeportivo,repoReserva);
+var listarAsistencia = new ListarAsistenciaAEventoUseCase(repoReserva, repoPersona, repoEventoDeportivo);
+
+
+//agregar Persona
+try
+{
+    agregarPersona.Ejecutar(1, new Persona());
+}
+catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
+catch (ValidacionException ex){Console.WriteLine(ex.Message);}
+catch (DuplicadoException ex){Console.WriteLine(ex.Message);}
+
+//agregar Reserva
+
+try
+{
+    agregarReserva.Ejecutar(1, new Reserva());
+}
+catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
+catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
+catch (DuplicadoException ex) { Console.WriteLine(ex.Message); }
+catch (ValidacionException ex) { Console.WriteLine(ex.Message); }
+
+//agregar Evento
+
+try
+{
+    agregarEvento.Ejecutar(1, new EventoDeportivo());
+}
+catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
+catch (ValidacionException ex){Console.WriteLine(ex.Message);}
+catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
+
+// actualizar Persona
+
+try
+{
+    modificarPersona.Ejecutar(1, new Persona());
+}
+catch (FalloAutorizacionException ex) {Console.WriteLine(ex.Message);}
+catch (EntidadNotFoundException ex) {Console.WriteLine(ex.Message);}
+
+// actulizar Reserva
+
+try
+{
+    modificarReserva.Ejecutar(1, new Reserva());
+}
+catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
+catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
+
+// actulizar Evento
+
+try
+{
+    modificarEvento.Ejecutar(1, new EventoDeportivo());
+}
+catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
+catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
+catch (OperacionInvalidaException ex) { Console.WriteLine(ex.Message); }
+
+// eliminar Persona
+
+try
+{
+    eliminarPersona.Ejecutar(1, 1);
+}
+catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
+catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
+catch (OperacionInvalidaException ex) { Console.WriteLine(ex.Message); }
+
+// eliminar Reserva
+
+try
+{
+    eliminarReserva.Ejecutar(1,1);
+}
+catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
+catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
+
+// eliminar evento
+
+try
+{
+    eliminarEvento.Ejecutar(1, 1);
+}
+catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
+catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
+catch (OperacionInvalidaException ex) { Console.WriteLine(ex.Message); }
