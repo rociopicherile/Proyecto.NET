@@ -50,7 +50,7 @@ var listarAsistencia = new ListarAsistenciaAEventoUseCase(repoReserva, repoPerso
 
 
 File.WriteAllText("personas.txt", string.Empty);
-File.WriteAllText("eventos.txt", string.Empty);
+File.WriteAllText("eventoDeportivo.txt", string.Empty);
 File.WriteAllText("reservas.txt", string.Empty);
 
 //agregar Persona
@@ -96,6 +96,23 @@ try
         FechaHoraInicio = new DateTime(2025, 11, 15, 9, 0, 0), // 15/11/2025 09:00 AM,
         DuracionHoras = 1.5, // 1 hora y 30 minutos
         CupoMaximo = 200,
+        ResponsableId = 2 // ID del organizador
+    });
+}
+
+catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
+catch (ValidacionException ex){Console.WriteLine(ex.Message);}
+catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
+
+// agregar Evento 2
+try
+{
+    agregarEvento.Ejecutar(1, new EventoDeportivo{
+        Nombre = "Voley",
+        Descripcion = "Descripción aquí",
+        FechaHoraInicio = new DateTime(2025, 11, 15, 13, 0, 0), // 15/11/2025 13:00 AM,
+        DuracionHoras = 2.5, // 1 hora y 30 minutos
+        CupoMaximo = 200,
         ResponsableId = 1 // ID del organizador
     });
 }
@@ -103,15 +120,16 @@ catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
 catch (ValidacionException ex){Console.WriteLine(ex.Message);}
 catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
 
-//Agregar Reserva
 
-/*
+//Agregar Reserva 1
+
 try
 {
     agregarReserva.Ejecutar(1, new Reserva{
-        EventoDeportivoId = "1",
+        PersonaId = 1,
+        EventoDeportivoId = 1,
         FechaAltaReserva = DateTime.Now,
-        EstadoAsistencia = "",
+        EstadoAsistencia = EstadoAsistencia.Pendiente,
     });
 }
 catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
