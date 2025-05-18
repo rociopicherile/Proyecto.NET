@@ -1,2 +1,1 @@
-1|12345678|Juan Pérez|2393-4941|juanActualizado@example.com
 2|2323842|Stevie Wonder|233-4904|Stevie@example.com

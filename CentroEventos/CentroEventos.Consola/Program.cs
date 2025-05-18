@@ -56,9 +56,9 @@ File.WriteAllText("reservas.txt", string.Empty);
 
 // (5) Acá comienzan los casos de prueba (agregar, actualizar, listar y eliminar)
 
-// LOS AGREGAR: FUNCIONAN TODOS. Solo me lanza error cuando quiero agregar más de una reserva.
+// LOS AGREGAR: FUNCIONAN TODOS. 
 // LOS ACTUALIZAR: FUNCIONA SOLO EL DE PERSONA
-
+// LOS ELIMINAR: FUNCIONA SOLO EL DE PERSONA
 
 //agregar Persona
 try
@@ -160,7 +160,7 @@ catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
 catch (DuplicadoException ex) { Console.WriteLine(ex.Message); }
 catch (ValidacionException ex) { Console.WriteLine(ex.Message); }
 
-
+*/
 
 // actualizar Persona (le cambio el mail y el teléfono a Juan Peréz)
 try
@@ -195,7 +195,7 @@ try
 }
 catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
 catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
-*/
+
 
 
 // Actualizar Evento Deportivo (actualizo evento Id = 2 y le cambio la duración horas y la descripción)
@@ -217,11 +217,11 @@ catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
 catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
 catch (OperacionInvalidaException ex) { Console.WriteLine(ex.Message); }
 
+*/
 
 
 
-
-// eliminar Persona
+// eliminar Persona: FUNCIONA
 
 try
 {
@@ -232,7 +232,7 @@ catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
 catch (OperacionInvalidaException ex) { Console.WriteLine(ex.Message); }
 
 
-
+/*
 // eliminar Reserva
 
 try

@@ -42,7 +42,7 @@ public class RepositorioReservaTXT : IRepositorioReserva
         }
         return resultado;
     }
-    
+
     public void AgregarReserva(Reserva p)
     {
         _idUltimo++;
@@ -100,6 +100,7 @@ public class RepositorioReservaTXT : IRepositorioReserva
             File.Move("archivoTemporal.TXT", _nombreArch);
         }
     }
+    
     public void EliminarReserva(int Id)
     {
         bool encontre = false;
