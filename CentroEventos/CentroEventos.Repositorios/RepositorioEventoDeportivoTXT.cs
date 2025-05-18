@@ -21,7 +21,7 @@ public class RepositorioEventoDeportivoTXT : IRepositorioEventoDeportivo
     readonly string _archivoIds = "IDsEventosDeportivos.txt";
     private int _idUltimo;
 
-    public RepositorioEventoDeportivoTxT()
+    public RepositorioEventoDeportivoTXT()
     {
         using var sr = new StreamReader(_archivoIds);
         _idUltimo = int.Parse(sr.ReadToEnd());
@@ -40,7 +40,7 @@ public class RepositorioEventoDeportivoTXT : IRepositorioEventoDeportivo
             e.FechaHoraInicio = DateTime.Parse(sr.ReadLine() ?? "");
             e.DuracionHoras = double.Parse(sr.ReadLine() ?? "");
             e.CupoMaximo = int.Parse(sr.ReadLine() ?? "");
-            e.Responsableld = int.Parse(sr.ReadLine() ?? "");
+            e.ResponsableId = int.Parse(sr.ReadLine() ?? "");
             resultado.Add(e);
         }
         return resultado;
@@ -52,7 +52,7 @@ public class RepositorioEventoDeportivoTXT : IRepositorioEventoDeportivo
         using var sw2 = new StreamWriter(_archivoIds, false);
 
         using var sw = new StreamWriter(_nombreArchivo, true);
-        ed.id = _idUltimo;
+        ed.Id = _idUltimo;
         sw.WriteLine(ed.Id);
         sw.WriteLine(ed.Nombre);
         sw.WriteLine(ed.Descripcion);
