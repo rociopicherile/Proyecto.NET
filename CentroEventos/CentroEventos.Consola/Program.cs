@@ -57,10 +57,10 @@ File.WriteAllText("reservas.txt", string.Empty);
 // (5) Acá comienzan los casos de prueba (agregar, actualizar, listar y eliminar)
 
 // LOS AGREGAR: FUNCIONAN TODOS. 
-// LOS ACTUALIZAR: FUNCIONA SOLO EL DE PERSONA
-// LOS ELIMINAR: FUNCIONA SOLO EL DE PERSONA
+// LOS ACTUALIZAR: FUNCIONA TODOS. Ya se arreglaron los de Evento y Reserva
+// LOS ELIMINAR: FUNCIONAN TODOS. Ya se arreglaron los de Evento y Reserva
+// LOS LISTAR: FUNCIONAN TODOS. Ya se arreglaron los de Evento y Reserva
 
-//agregar Persona
 try
 {
     agregarPersona.Ejecutar(1, new Persona
@@ -100,7 +100,7 @@ try
         Nombre = "Fútbol",
         Descripcion = "Descripción aquí",
         FechaHoraInicio = new DateTime(2025, 11, 15, 9, 0, 0), // 15/11/2025 09:00 AM,
-        DuracionHoras = 1.5, // 1 hora y 30 minutos
+        DuracionHoras = 1, // 1 hora 
         CupoMaximo = 200,
         ResponsableId = 2 // ID del organizador
     });
@@ -117,7 +117,7 @@ try
         Nombre = "Voley",
         Descripcion = "Descripción aquí",
         FechaHoraInicio = new DateTime(2025, 11, 15, 13, 0, 0), // 15/11/2025 13:00 AM,
-        DuracionHoras = 2.5, // 1 hora y 30 minutos
+        DuracionHoras = 2.5, //  2 horas y 30 minutos
         CupoMaximo = 200,
         ResponsableId = 1 // ID del organizador
     });
@@ -160,7 +160,7 @@ catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
 catch (DuplicadoException ex) { Console.WriteLine(ex.Message); }
 catch (ValidacionException ex) { Console.WriteLine(ex.Message); }
 
-*/
+
 
 // actualizar Persona (le cambio el mail y el teléfono a Juan Peréz)
 try
@@ -180,9 +180,9 @@ catch (EntidadNotFoundException ex) {Console.WriteLine(ex.Message);}
 
 
 
-// actualizar Reserva (actualizo la reserva de Id = 1 y le cambio el estado asistencia)
-// NO ME FUNCIONA. LANZA ERROR
-/*
+// Actualizar Reserva (actualizo la reserva de Id = 1 y le cambio el estado asistencia)
+// Ahora sí funciona. Tuve que cambiar el método
+
 try
 {
     modificarReserva.Ejecutar(1, new Reserva{
@@ -199,8 +199,8 @@ catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
 
 
 // Actualizar Evento Deportivo (actualizo evento Id = 2 y le cambio la duración horas y la descripción)
-// No me funcionó tampoco
-/*
+// Ahora sí funciona. Había un error en el cast de DuracionHoras
+
 try
 {
     modificarEvento.Ejecutar(1, new EventoDeportivo{
@@ -208,7 +208,7 @@ try
         Nombre = "Voley",
         Descripcion = "Descripción actualizada aquí",
         FechaHoraInicio = new DateTime(2025, 11, 15, 13, 0, 0), // 15/11/2025 13:00 AM,
-        DuracionHoras = 3.5, // 1 hora y 30 minutos
+        DuracionHoras = 3, // 3 horas
         CupoMaximo = 200,
         ResponsableId = 1 // ID del organizador
     });
@@ -217,7 +217,7 @@ catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
 catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
 catch (OperacionInvalidaException ex) { Console.WriteLine(ex.Message); }
 
-*/
+
 
 
 
@@ -232,8 +232,9 @@ catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
 catch (OperacionInvalidaException ex) { Console.WriteLine(ex.Message); }
 
 
-/*
+
 // eliminar Reserva
+// ya funciona
 
 try
 {
@@ -241,6 +242,8 @@ try
 }
 catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
 catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
+
+
 
 // eliminar evento
 
@@ -252,12 +255,38 @@ catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
 catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
 catch (OperacionInvalidaException ex) { Console.WriteLine(ex.Message); }
 
+
 //listar no se si tiene try and catch
 
-listarPersona.Ejecutar();
-listarReserva.Ejecutar();
-listarEvento.Ejecutar();
-listarAsistencia.Ejecutar();
-listarEventoConCupoDisponible.Ejecutar();
+Console.WriteLine("-------------------");
+Console.WriteLine("Lista de personas: ");
+foreach (Persona p in listarPersona.Ejecutar()){
+    Console.WriteLine(p);
+}
 
-*/
+Console.WriteLine("-------------------");
+Console.WriteLine("Lista de reservas: ");
+foreach (Reserva r in listarReserva.Ejecutar()){
+    Console.WriteLine(r);
+}
+
+
+Console.WriteLine("-------------------");
+Console.WriteLine("Lista de Eventos: ");
+foreach (EventoDeportivo ed in listarEvento.Ejecutar()){
+    Console.WriteLine(ed);
+}
+
+
+Console.WriteLine("-------------------");
+Console.WriteLine("Lista de Eventos con cupo disponible: ");
+foreach (EventoDeportivo ed in listarEventoConCupoDisponible.Ejecutar()){
+    Console.WriteLine(ed);
+}
+
+Console.WriteLine("-------------------");
+Console.WriteLine("Lista de asistencias: ");
+foreach (Persona p in listarAsistencia.Ejecutar()){
+    Console.WriteLine(p);
+}
+
