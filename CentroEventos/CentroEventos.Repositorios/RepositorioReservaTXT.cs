@@ -109,7 +109,7 @@ public class RepositorioReservaTXT : IRepositorioReserva
         while (!sr.EndOfStream)
         {
             List<string> l = new List<string>();// creo una lista para ir guardo los strign que leo y ver si encontre mi id accediendo a l[0].
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 5; i++)
             {
                 l.Add(sr.ReadLine() ?? "");//voy guardando las lineas que leo a la lista de strings.
             }
