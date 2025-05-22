@@ -1,2 +1,4 @@
 1|12345678|Juan Pérez|2393-4941|juanActualizado@example.com
 2|2323842|Stevie Wonder|233-4904|Stevie@example.com
+3|23238322|Mick Jagger|221-1111111|mJagger@example.com
+4|29111823|Leonel Messi|221-2222222|LMessi@example.com

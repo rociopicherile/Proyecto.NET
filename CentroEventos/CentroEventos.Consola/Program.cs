@@ -56,10 +56,7 @@ File.WriteAllText("reservas.txt", string.Empty);
 
 // (5) Acá comienzan los casos de prueba (agregar, actualizar, listar y eliminar)
 
-// LOS AGREGAR: FUNCIONAN TODOS. 
-// LOS ACTUALIZAR: FUNCIONA TODOS. Ya se arreglaron los de Evento y Reserva
-// LOS ELIMINAR: FUNCIONAN TODOS. Ya se arreglaron los de Evento y Reserva
-// LOS LISTAR: FUNCIONAN TODOS. Ya se arreglaron los de Evento y Reserva
+//agregar persona 1 
 
 try
 {
@@ -76,7 +73,9 @@ catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
 catch (ValidacionException ex){Console.WriteLine(ex.Message);}
 catch (DuplicadoException ex){Console.WriteLine(ex.Message);}
 
+
 //agregar Persona 2
+
 try
 {
     agregarPersona.Ejecutar(1, new Persona
@@ -93,7 +92,44 @@ catch (ValidacionException ex){Console.WriteLine(ex.Message);}
 catch (DuplicadoException ex){Console.WriteLine(ex.Message);}
 
 
+//agregar Persona 3
+
+try
+{
+    agregarPersona.Ejecutar(1, new Persona
+    {
+        DNI = "23238322",
+        Nombre = "Mick",
+        Apellido = "Jagger",
+        Email = "mJagger@example.com",
+        Telefono = "221-1111111"
+    });
+}
+catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
+catch (ValidacionException ex){Console.WriteLine(ex.Message);}
+catch (DuplicadoException ex){Console.WriteLine(ex.Message);}
+
+
+//agregar Persona 4
+
+try
+{
+    agregarPersona.Ejecutar(1, new Persona
+    {
+        DNI = "29111823",
+        Nombre = "Leonel",
+        Apellido = "Messi",
+        Email = "LMessi@example.com",
+        Telefono = "221-2222222"
+    });
+}
+catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
+catch (ValidacionException ex){Console.WriteLine(ex.Message);}
+catch (DuplicadoException ex){Console.WriteLine(ex.Message);}
+
+
 //agregar Evento
+
 try
 {
     agregarEvento.Ejecutar(1, new EventoDeportivo{
@@ -110,7 +146,9 @@ catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
 catch (ValidacionException ex){Console.WriteLine(ex.Message);}
 catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
 
+
 // agregar Evento 2
+
 try
 {
     agregarEvento.Ejecutar(1, new EventoDeportivo{
@@ -127,24 +165,26 @@ catch (ValidacionException ex){Console.WriteLine(ex.Message);}
 catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
 
 
-//Agregar Reserva 1
+
+// agregar Evento 3
 
 try
 {
-    agregarReserva.Ejecutar(1, new Reserva{
-        PersonaId = 1,
-        EventoDeportivoId = 1,
-        FechaAltaReserva = DateTime.Now,
-        EstadoAsistencia = EstadoAsistencia.Pendiente,
+    agregarEvento.Ejecutar(1, new EventoDeportivo{
+        Nombre = "Basquet",
+        Descripcion = "Descripción aquí",
+        FechaHoraInicio = new DateTime(2025, 11, 15, 16, 0, 0), // 15/11/2025 13:00 AM,
+        DuracionHoras = 2, //  2 horas
+        CupoMaximo = 300,
+        ResponsableId = 1 // ID del organizador
     });
 }
 catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
+catch (ValidacionException ex){Console.WriteLine(ex.Message);}
 catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
-catch (DuplicadoException ex) { Console.WriteLine(ex.Message); }
-catch (ValidacionException ex) { Console.WriteLine(ex.Message); }
 
 
-//Agregar Reserva 2
+//Agregar Reserva 1
 
 try
 {
@@ -161,8 +201,59 @@ catch (DuplicadoException ex) { Console.WriteLine(ex.Message); }
 catch (ValidacionException ex) { Console.WriteLine(ex.Message); }
 
 
+//Agregar Reserva 2
+
+try
+{
+    agregarReserva.Ejecutar(1, new Reserva{
+        PersonaId = 2,
+        EventoDeportivoId = 2,
+        FechaAltaReserva = DateTime.Now,
+        EstadoAsistencia = EstadoAsistencia.Pendiente,
+    });
+}
+catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
+catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
+catch (DuplicadoException ex) { Console.WriteLine(ex.Message); }
+catch (ValidacionException ex) { Console.WriteLine(ex.Message); }
+
+
+//Agregar Reserva 3
+
+try
+{
+    agregarReserva.Ejecutar(1, new Reserva{
+        PersonaId = 3,
+        EventoDeportivoId = 2,
+        FechaAltaReserva = DateTime.Now,
+        EstadoAsistencia = EstadoAsistencia.Pendiente,
+    });
+}
+catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
+catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
+catch (DuplicadoException ex) { Console.WriteLine(ex.Message); }
+catch (ValidacionException ex) { Console.WriteLine(ex.Message); }
+
+
+//agregar Reserva 4
+
+try
+{
+    agregarReserva.Ejecutar(1, new Reserva{
+        PersonaId = 4,
+        EventoDeportivoId = 3,
+        FechaAltaReserva = DateTime.Now,
+        EstadoAsistencia = EstadoAsistencia.Asistio,
+    });
+}
+catch (FalloAutorizacionException ex){Console.WriteLine(ex.Message);}
+catch (EntidadNotFoundException ex){Console.WriteLine(ex.Message);}
+catch (DuplicadoException ex) { Console.WriteLine(ex.Message); }
+catch (ValidacionException ex) { Console.WriteLine(ex.Message); }
+
 
 // actualizar Persona (le cambio el mail y el teléfono a Juan Peréz)
+
 try
 {
     modificarPersona.Ejecutar(1, new Persona
@@ -181,7 +272,6 @@ catch (EntidadNotFoundException ex) {Console.WriteLine(ex.Message);}
 
 
 // Actualizar Reserva (actualizo la reserva de Id = 1 y le cambio el estado asistencia)
-// Ahora sí funciona. Tuve que cambiar el método
 
 try
 {
@@ -198,8 +288,7 @@ catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
 
 
 
-// Actualizar Evento Deportivo (actualizo evento Id = 2 y le cambio la duración horas y la descripción)
-// Ahora sí funciona. Había un error en el cast de DuracionHoras
+// Actualizar Evento Deportivo (actualizo evento Id = 2 y le cambio la duración horas, la descripción y el cupo)
 
 try
 {
@@ -209,7 +298,7 @@ try
         Descripcion = "Descripción actualizada aquí",
         FechaHoraInicio = new DateTime(2025, 11, 15, 13, 0, 0), // 15/11/2025 13:00 AM,
         DuracionHoras = 3, // 3 horas
-        CupoMaximo = 200,
+        CupoMaximo = 2,
         ResponsableId = 1 // ID del organizador
     });
 }
@@ -219,9 +308,7 @@ catch (OperacionInvalidaException ex) { Console.WriteLine(ex.Message); }
 
 
 
-
-
-// eliminar Persona: FUNCIONA
+// eliminar Persona
 
 try
 {
@@ -232,9 +319,7 @@ catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
 catch (OperacionInvalidaException ex) { Console.WriteLine(ex.Message); }
 
 
-
 // eliminar Reserva
-// ya funciona
 
 try
 {
@@ -242,7 +327,6 @@ try
 }
 catch (FalloAutorizacionException ex) { Console.WriteLine(ex.Message); }
 catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
-
 
 
 // eliminar evento
@@ -256,7 +340,7 @@ catch (EntidadNotFoundException ex) { Console.WriteLine(ex.Message); }
 catch (OperacionInvalidaException ex) { Console.WriteLine(ex.Message); }
 
 
-//listar no se si tiene try and catch
+//listar
 
 Console.WriteLine("-------------------");
 Console.WriteLine("Lista de personas: ");
