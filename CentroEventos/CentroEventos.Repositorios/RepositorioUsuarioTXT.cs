@@ -8,7 +8,9 @@ public class RepositorioUsuarioTXT : IRepositorioUsuario
 
     public void EliminarUsuario(int id) { }
 
-    public List<Usuario> ListarUsuario() { }
+    public List<Usuario> ListarUsuario()
+    { 
+    }
 
     public void ActualizarUsuario(Usuario usuario) { }
 
