@@ -14,5 +14,5 @@ public class RepositorioUsuarioTXT : IRepositorioUsuario
 
     public void ActualizarUsuario(Usuario usuario) { }
 
-
+    public bool ExisteEmail(string email) { }
 }

@@ -33,12 +33,12 @@ public class PersonaValidador(IRepositorioPersona repositorio, IRepositorioReser
         return !(string.IsNullOrWhiteSpace(email));
     }
 
-    public bool ValidarExisteEmail(string? email)
+    public bool ValidarExisteEmail(string email)
     {
         return repositorio.ExisteEmail(email);
     }
 
-    public bool ValidarExisteDni(string? dni)
+    public bool ValidarExisteDni(string dni)
     {
         return repositorio.ExisteDNI(dni);
     }

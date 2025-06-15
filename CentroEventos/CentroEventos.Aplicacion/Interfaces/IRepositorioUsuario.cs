@@ -11,4 +11,6 @@ public interface IRepositorioUsuario
 
     void ActualizarUsuario(Usuario usuario);
 
+    bool ExisteEmail(string email);
+
 }
