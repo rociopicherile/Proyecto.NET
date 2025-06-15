@@ -5,6 +5,7 @@
 // únicamente de inicializar la base de datos.
 
 namespace CentroEventos.Repositorios;
+using Microsoft.EntityFrameworkCore;
 
 public class EscuelaSqlite
 {
@@ -14,6 +15,15 @@ public class EscuelaSqlite
         if (context.Database.EnsureCreated())
         {
             Console.WriteLine("Se creó base de datos");
+        }
+        
+        // Establecer la propiedad journal mode
+        var connection = context.Database.GetDbConnection();
+        connection.Open();
+        using (var command = connection.CreateCommand())
+        {
+            command.CommandText = "PRAGMA journal_mode=DELETE;";
+            command.ExecuteNonQuery();
         }
     }
 }
