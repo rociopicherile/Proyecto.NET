@@ -10,9 +10,9 @@ using CentroEventos.Aplicacion.Validadores;
 
 public class AgregarEventoDeportivoUseCase(IRepositorioEventoDeportivo repo,EventoDeportivoValidador validador,IServicioAutorizacion autorizacion)
 {
-    public void Ejecutar(int IdUsuario,EventoDeportivo e){
+    public void Ejecutar(List<EnumPermisos> list,EventoDeportivo e){
         //tira una exepcion que se propaga al main donde se lo llama y se lo atrapa con dicho catch.?
-        if (!autorizacion.PoseeElPermiso(IdUsuario, EnumPermisos.EventoAlta))
+        if (!autorizacion.PoseeElPermiso(list, EnumPermisos.EventoAlta))
         {
             throw new FalloAutorizacionException("Usuario no tiene Autorizacion");
         }

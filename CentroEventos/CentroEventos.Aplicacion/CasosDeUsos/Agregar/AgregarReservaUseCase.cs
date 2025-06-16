@@ -11,8 +11,8 @@ using CentroEventos.Aplicacion.Validadores;
 
 public class AgregarReservaUseCase(IRepositorioReserva repo,ReservaValidador validador,IServicioAutorizacion autorizacion)
 {
-    public void Ejecutar(int IdUsuario,Reserva r){
-        if (!autorizacion.PoseeElPermiso(IdUsuario, EnumPermisos.ReservaAlta))
+    public void Ejecutar(List<EnumPermisos> list,Reserva r){
+        if (!autorizacion.PoseeElPermiso(list, EnumPermisos.ReservaAlta))
         {
             throw new FalloAutorizacionException("Usuario no tiene Autorizacion");
         }

@@ -9,6 +9,6 @@ public class Usuario
     public string? Contraseña { get; set; }
 
     // No sé si esto estará bien. Pregunté por ideas
-    public List<Permiso> UsuarioPermisos { get; set; } = new List<Permiso>();
+    public List<EnumPermisos> UsuarioPermisos { get; set; } = new List<EnumPermisos>();
 }
 

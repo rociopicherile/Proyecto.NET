@@ -10,8 +10,8 @@ using CentroEventos.Aplicacion.Validadores;
 
 public class AgregarPersonaUseCase(IRepositorioPersona repo,PersonaValidador validador,IServicioAutorizacion autorizacion)
 {
-    public void Ejecutar(int IdUsuario,Persona p){
-        if (!autorizacion.PoseeElPermiso(IdUsuario, EnumPermisos.UsuarioAlta))
+    public void Ejecutar(List<EnumPermisos> list,Persona p){
+        if (!autorizacion.PoseeElPermiso(list, EnumPermisos.UsuarioAlta))
         {
             throw new FalloAutorizacionException("Usuario no tiene Autorizacion");
         }

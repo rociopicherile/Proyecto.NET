@@ -10,8 +10,8 @@ using CentroEventos.Aplicacion.Validadores;
 
 public class ActualizarEventoDeportivoUseCase(IRepositorioEventoDeportivo repo,EventoDeportivoValidador validador,IServicioAutorizacion autorizacion)
 {
-    public void Ejecutar(int IdUsuario,EventoDeportivo e){
-        if (!autorizacion.PoseeElPermiso(IdUsuario, Permiso.EventoModificacion))
+    public void Ejecutar(List<EnumPermisos> list,EventoDeportivo e){
+        if (!autorizacion.PoseeElPermiso(list, EnumPermisos.EventoModificacion))
         {
             throw new FalloAutorizacionException("Usuario no tiene Autorizacion");
         }

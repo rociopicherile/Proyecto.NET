@@ -8,9 +8,9 @@ using CentroEventos.Aplicacion.Validadores;
 
 public class ActualizarUsuarioUseCase(IRepositorioUsuario repo, UsuarioValidador validador,IServicioAutorizacion autorizacion)
 {
-    public void Ejecutar(int IdUsuario, Usuario u)
+    public void Ejecutar(List<EnumPermisos> list, Usuario u)
     {
-        if (!autorizacion.PoseeElPermiso(IdUsuario, EnumPermisos.UsuarioModificacion))
+        if (!autorizacion.PoseeElPermiso(list, EnumPermisos.UsuarioModificacion))
         {
             throw new FalloAutorizacionException("Usuario no tiene Autorizacion");
         }
