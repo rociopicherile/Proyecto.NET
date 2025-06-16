@@ -1,6 +1,6 @@
 namespace CentroEventos.Aplicacion.Entidades;
 
-public enum Permiso
+public enum EnumPermisos
 {
     EventoAlta, EventoModificacion, EventoBaja,
     ReservaAlta, ReservaModificacion, ReservaBaja,
