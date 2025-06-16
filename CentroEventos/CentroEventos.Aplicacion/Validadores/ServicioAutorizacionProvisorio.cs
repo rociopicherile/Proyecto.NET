@@ -9,7 +9,7 @@ using CentroEventos.Aplicacion.Validadores;
 
 public class ServicioAutorizacionProvisorio : IServicioAutorizacion
 {
-    public bool PoseeElPermiso(int IdUsuario, Permiso p)
+    public bool PoseeElPermiso(int IdUsuario, EnumPermisos p)
     {
 
         return IdUsuario == 1;

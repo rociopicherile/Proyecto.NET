@@ -16,7 +16,7 @@ using CentroEventos.Aplicacion.Validadores;
 public class EliminarPersonaUseCase(IRepositorioPersona repoP, PersonaValidador validador,IServicioAutorizacion autorizacion)
 {
     public void Ejecutar(int IdUsuario,int id){
-        if (!autorizacion.PoseeElPermiso(IdUsuario, Permiso.UsuarioBaja))
+        if (!autorizacion.PoseeElPermiso(IdUsuario, EnumPermisos.UsuarioBaja))
         {
             throw new FalloAutorizacionException("Usuario no tiene Autorizacion");
         } 

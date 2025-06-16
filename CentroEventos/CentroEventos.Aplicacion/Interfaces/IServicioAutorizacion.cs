@@ -8,5 +8,5 @@ using CentroEventos.Aplicacion.Validadores;
 
 public interface IServicioAutorizacion
 {
-   public bool PoseeElPermiso(int IdUsuario, Permiso permiso);
+   public bool PoseeElPermiso(int IdUsuario, EnumPermisos permiso);
 }

@@ -9,10 +9,12 @@ public class RepositorioUsuarioTXT : IRepositorioUsuario
     public void EliminarUsuario(int id) { }
 
     public List<Usuario> ListarUsuario()
-    { 
+    {
     }
 
     public void ActualizarUsuario(Usuario usuario) { }
 
     public bool ExisteEmail(string email) { }
+
+    public bool ExisteId(int id) { }
 }

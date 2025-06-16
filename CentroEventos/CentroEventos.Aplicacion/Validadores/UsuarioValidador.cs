@@ -23,6 +23,10 @@ public class UsuarioValidador(IRepositorioUsuario repoUsu)
         return repoUsu.ExisteEmail(email);
     }
 
+    public bool ValidarExiste(int id)//validacion solo para el eliminar y modificar
+    {
+        return repoUsu.ExisteId(id);
+    }
     public bool ValidarContraseña(string? contraseña)
     {
 

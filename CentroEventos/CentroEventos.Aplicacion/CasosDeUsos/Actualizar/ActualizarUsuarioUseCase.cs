@@ -6,7 +6,18 @@ using CentroEventos.Aplicacion.Interfaces;
 using CentroEventos.Aplicacion.Entidades;
 using CentroEventos.Aplicacion.Validadores;
 
-public class ActualizarUsuarioUseCase()
+public class ActualizarUsuarioUseCase(IRepositorioUsuario repo, UsuarioValidador validador,IServicioAutorizacion autorizacion)
 {
-    
+    public void Ejecutar(int IdUsuario, Usuario u)
+    {
+        if (!autorizacion.PoseeElPermiso(IdUsuario, EnumPermisos.UsuarioModificacion))
+        {
+            throw new FalloAutorizacionException("Usuario no tiene Autorizacion");
+        }
+        if (!validador.ValidarExiste(u.Id))
+        {
+            throw new EntidadNotFoundException("El usuario que  se intenta actualizar no existe.");
+        }
+        repo.ActualizarUsuario(u);
+    }
 }

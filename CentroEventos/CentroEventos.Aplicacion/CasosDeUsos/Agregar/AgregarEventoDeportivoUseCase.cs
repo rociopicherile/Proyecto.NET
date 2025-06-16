@@ -12,7 +12,7 @@ public class AgregarEventoDeportivoUseCase(IRepositorioEventoDeportivo repo,Even
 {
     public void Ejecutar(int IdUsuario,EventoDeportivo e){
         //tira una exepcion que se propaga al main donde se lo llama y se lo atrapa con dicho catch.?
-        if (!autorizacion.PoseeElPermiso(IdUsuario, Permiso.EventoAlta))
+        if (!autorizacion.PoseeElPermiso(IdUsuario, EnumPermisos.EventoAlta))
         {
             throw new FalloAutorizacionException("Usuario no tiene Autorizacion");
         }

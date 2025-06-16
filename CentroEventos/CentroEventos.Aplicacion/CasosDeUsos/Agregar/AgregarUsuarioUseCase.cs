@@ -10,7 +10,7 @@ public class AgregarUsuarioUseCase(IRepositorioUsuario repo, UsuarioValidador va
 
     public void Ejecutar(int IdUsuario, Usuario u)
     {   
-        if (!autorizacion.PoseeElPermiso(IdUsuario, Permiso.UsuarioAlta))
+        if (!autorizacion.PoseeElPermiso(IdUsuario, EnumPermisos.UsuarioAlta))
         {
             throw new FalloAutorizacionException("Usuario no tiene Autorizacion");
         }
