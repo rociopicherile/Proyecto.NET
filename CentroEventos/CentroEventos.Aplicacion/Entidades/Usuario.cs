@@ -7,4 +7,8 @@ public class Usuario
     public string? Apellido { get; set; }
     public string? Email { get; set; }
     public string? Contraseña { get; set; }
+
+    // No sé si esto estará bien. Pregunté por ideas
+    public List<EnumPermisos> UsuarioPermisos { get; set; } = new List<EnumPermisos>();
 }
+
