@@ -1,20 +1,63 @@
+// Belén
+
+
+namespace CentroEventos.Repositorios;
+
 using CentroEventos.Aplicacion.Interfaces;
 using CentroEventos.Aplicacion.Entidades;
 
-public class RepositorioUsuarioTXT : IRepositorioUsuario
+public class RepositorioUsuarioEF : IRepositorioUsuario
 {
 
-    public void AgregarUsuario(Usuario usuario) { }
+    private readonly CentroEventosContext _dbContext;
 
-    public void EliminarUsuario(int id) { }
-
-    public List<Usuario> ListarUsuario()
+    public RepositorioUsuarioEF(CentroEventosContext dbContext)
     {
+        _dbContext = dbContext;
     }
 
-    public void ActualizarUsuario(Usuario usuario) { }
+    // CREATE
+    public void AgregarUsuario(Usuario usuario)
+    {
+        _dbContext.Usuarios.Add(usuario);
+        _dbContext.SaveChanges();
+    }
 
+    // DELETE 
+    public void EliminarUsuario(int id)
+    {
+        var usuario = BuscarUsuario(id);
+        _dbContext.Usuarios.Remove(usuario);
+        _dbContext.SaveChanges();
+
+    }
+    public Usuario BuscarUsuario(int id)
+    {
+        return this.ListarUsuario().First(u => u.Id == id);
+    }
+
+    // READ
+    public List<Usuario> ListarUsuario()
+    {
+        return _dbContext.Usuarios.ToList();
+    }
+
+    // UPDATE
+    public void ActualizarUsuario(Usuario usuario)
+    {
+        // (1) Busco a la persona con sus datos viejos
+        Usuario usuarioViejo = BuscarUsuario(usuario.Id);
+
+        // (2) Copiar TODOS los valores del objeto nuevo al existente
+        _dbContext.Entry(usuarioViejo).CurrentValues.SetValues(usuario);
+
+        // (3) Guardar cambios
+        _dbContext.SaveChanges();
+    }
+
+    /*
     public bool ExisteEmail(string email) { }
 
     public bool ExisteId(int id) { }
+    */
 }

@@ -11,6 +11,10 @@ public interface IRepositorioUsuario
 
     void ActualizarUsuario(Usuario usuario);
 
+    Usuario BuscarUsuario(int id);
+
+    /*
     bool ExisteEmail(string email);
     bool ExisteId(int id);
+    */
 }
