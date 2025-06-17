@@ -1,5 +1,5 @@
 // Belén
-
+// FALTA COMPLETAR UN PAR DE MÉTODOS (ExisteEmail y ExisteId)
 
 namespace CentroEventos.Repositorios;
 
@@ -60,9 +60,13 @@ public class RepositorioUsuarioEF : IRepositorioUsuario
         return _dbContext.Usuarios.Any();
     }
 
-    /*
-    public bool ExisteEmail(string email) { }
 
+    public Usuario BuscarUsuarioPorEmail(string email)
+    {
+        return this.ListarUsuario().First(u => u.Email == email);
+    }
+
+    /*
     public bool ExisteId(int id) { }
     */
 }
