@@ -5,7 +5,7 @@ asociadas a ella (independientemente del estado de las reservas)."
 
 terminado (creo)
 */
-namespace CentroEventos.Aplicacion.Eliminar;
+namespace CentroEventos.Aplicacion.CasosDeUsos.Eliminar;
 
 using System;
 using CentroEventos.Aplicacion.Excepciones;

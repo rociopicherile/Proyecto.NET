@@ -1,0 +1,63 @@
+
+@page "/listadoPersonas"
+@rendermode InteractiveServer
+@inject ListarPersonaUseCase ListarPersonaUseCase
+@inject EliminarPersonaUseCase EliminarPersonaUseCase
+
+<DialogoConfirmacion @ref="dialogo" OnConfirmado="Eliminar"/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>APELLIDO</th>
+            <th>DNI</th>
+            <th>EMAIL</th>
+            <th>TELEFONO</th>
+            <th>ACCION</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in _lista)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Nombre</td>
+                <td>@p.Apellido</td>
+                <td>@p.DNI</td>
+                <td>@p.Email</td>
+                <td>@p.Telefono</td>
+                <td>
+                        <button class="btn btn-primary">Editar</button>
+                        <button class="btn btn-danger" @onclick="()=>ConfirmarEliminacion(p)">Eliminar</button> 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+    List<Persona> _lista = new List<Persona>();
+    protected override void OnInitialized()
+    {
+        _lista = ListarPersonaUseCase.Ejecutar();
+    }
+
+    DialogoConfirmacion dialogo = null!;
+    Persona? _personaParaEliminar = null;
+    private void ConfirmarEliminacion(Cliente cli)
+    {
+        _personaParaEliminar = cli;
+        dialogo.Mensaje = $"¿Desea eliminar la Persona {p.Nombre} {p.Apellido}?";
+        dialogo.Mostrar();
+    }
+    private void Eliminar()
+    {
+        if (_perosonaParaEliminar != null)
+        {
+            EliminarPersonaUseCase.Ejecutar(_personaParaEliminar.Id);
+            _lista = ListarPersonaUseCase.Ejecutar(); 
+        }
+    }
+}

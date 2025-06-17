@@ -1,3 +1,6 @@
+using CentroEventos.Aplicacion.CasosDeUsos.Agregar;
+using CentroEventos.Aplicacion.CasosDeUsos.Eliminar;
+using CentroEventos.Aplicacion.Loggin;
 using CentroEventos.UI.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +8,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddTransient<AgregarPersonaUseCase>();
+builder.Services.AddTransient<EliminarPersonaUseCase>();
+
+builder.Services.AddScoped<LogginUseCase>();
+builder.Services.AddScoped<UsuarioSesion>();
 
 var app = builder.Build();
 

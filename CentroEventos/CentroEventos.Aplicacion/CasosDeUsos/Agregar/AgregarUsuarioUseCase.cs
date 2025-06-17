@@ -1,6 +1,6 @@
 // Añadí lo de hashear la contraseña y asignarle todos los permisos si es el admin
 
-namespace CentroEventos.Aplicacion.Agregar;
+namespace CentroEventos.Aplicacion.CasosDeUsos.Agregar;
 
 using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Interfaces;

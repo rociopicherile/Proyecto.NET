@@ -1,4 +1,4 @@
-namespace CentroEventos.Aplicacion;
+namespace CentroEventos.Aplicacion.CasosDeUsos.Listar;
 
 
 using CentroEventos.Aplicacion.Interfaces;

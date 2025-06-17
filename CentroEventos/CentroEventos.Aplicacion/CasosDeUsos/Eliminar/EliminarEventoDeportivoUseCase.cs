@@ -4,7 +4,7 @@
 
 Corregido por mí (Rocío Belén)
 */
-namespace CentroEventos.Aplicacion.Eliminar;
+namespace CentroEventos.Aplicacion.CasosDeUsos.Eliminar;
 
 using System;
 using CentroEventos.Aplicacion.Excepciones;

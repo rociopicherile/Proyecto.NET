@@ -1,4 +1,4 @@
-namespace CentroEventos.Aplicacion.Agregar;
+namespace CentroEventos.Aplicacion.CasosDeUsos.Eliminar;
 
 using CentroEventos.Aplicacion.Excepciones;
 using CentroEventos.Aplicacion.Interfaces;

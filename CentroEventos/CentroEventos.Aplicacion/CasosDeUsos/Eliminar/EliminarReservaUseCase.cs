@@ -1,5 +1,5 @@
 // Corregido por Sebas
-namespace CentroEventos.Aplicacion.Eliminar;
+namespace CentroEventos.Aplicacion.CasosDeUsos.Eliminar;
 
 using System;
 using CentroEventos.Aplicacion.Excepciones;

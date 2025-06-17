@@ -1,5 +1,5 @@
 // Código corregido por Sebas
-namespace CentroEventos.Aplicacion.Agregar;
+namespace CentroEventos.Aplicacion.CasosDeUsos.Agregar;
 
 
 using System;

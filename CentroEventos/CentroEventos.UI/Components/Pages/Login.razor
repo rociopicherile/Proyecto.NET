@@ -1,0 +1,24 @@
+@page "/Login"
+
+@rendermode InteractiveServer
+@inject NavigationManager Navegador
+
+@inject LogginUseCase logginUseCase
+
+
+
+<input placeholder="Email" @bind= "Email" class=" form-control"></input>
+<input placeholder="contraseña" @bind= "contraseña" class= "form-control"></input>
+
+
+
+
+
+
+@code {
+    String Email {get; set;}
+    String contraseña {get; set;}
+    void Aceptar{
+        logginUseCase.Ejecutar(_usuario);
+    }
+}

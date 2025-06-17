@@ -1,4 +1,4 @@
-namespace CentroEventos.Aplicacion;
+namespace CentroEventos.Aplicacion.CasosDeUsos.Actualizar;
 
 using System;
 using CentroEventos.Aplicacion.Excepciones;
