@@ -10,7 +10,7 @@ using CentroEventos.Aplicacion.Seguridad;
 
 
 
-public class LogingUseCase(IRepositorioUsuario repo, UsuarioValidador validador)
+public class LogginUseCase(IRepositorioUsuario repo, UsuarioValidador validador)
 {
     public Usuario Ejecutar(string email, string password)
     {
