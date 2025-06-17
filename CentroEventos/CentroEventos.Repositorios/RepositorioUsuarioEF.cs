@@ -55,6 +55,11 @@ public class RepositorioUsuarioEF : IRepositorioUsuario
         _dbContext.SaveChanges();
     }
 
+    public bool ExistenUsuariosRegistrados()
+    { 
+        return _dbContext.Usuarios.Any();
+    }
+
     /*
     public bool ExisteEmail(string email) { }
 

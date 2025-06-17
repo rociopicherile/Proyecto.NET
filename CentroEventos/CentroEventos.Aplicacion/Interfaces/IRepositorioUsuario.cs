@@ -13,6 +13,7 @@ public interface IRepositorioUsuario
 
     Usuario BuscarUsuario(int id);
 
+    Boolean ExistenUsuariosRegistrados();
     /*
     bool ExisteEmail(string email);
     bool ExisteId(int id);

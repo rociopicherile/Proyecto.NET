@@ -1,3 +1,4 @@
+namespace CentroEventos.Aplicacion.Seguridad;
 
 using System.Security.Cryptography;
 using System.Text;
