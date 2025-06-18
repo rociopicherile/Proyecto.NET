@@ -1,5 +1,7 @@
+using CentroEventos.Aplicacion.CasosDeUsos.Actualizar;
 using CentroEventos.Aplicacion.CasosDeUsos.Agregar;
 using CentroEventos.Aplicacion.CasosDeUsos.Eliminar;
+using CentroEventos.Aplicacion.CasosDeUsos.Listar;
 using CentroEventos.Aplicacion.Loggin;
 using CentroEventos.UI.Components;
 
@@ -11,7 +13,8 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddTransient<AgregarPersonaUseCase>();
 builder.Services.AddTransient<EliminarPersonaUseCase>();
-
+builder.Services.AddTransient<ListarPersonaUseCase>();
+builder.Services.AddTransient<ActualizarPersonaUseCase>();
 builder.Services.AddScoped<LogginUseCase>();
 builder.Services.AddScoped<UsuarioSesion>();
 

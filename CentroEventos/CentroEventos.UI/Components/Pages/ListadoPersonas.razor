@@ -54,7 +54,7 @@
     }
     private void Eliminar()
     {
-        if (_perosonaParaEliminar != null)
+        if (_personaParaEliminar != null)
         {
             EliminarPersonaUseCase.Ejecutar(_personaParaEliminar.Id);
             _lista = ListarPersonaUseCase.Ejecutar(); 
